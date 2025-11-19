@@ -1,11 +1,16 @@
-<h1 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="35" height="35" /> Hi <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Waving Hand Medium-Light Skin Tone" width="35" height="35" />, I'm Salman Toha <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" alt="Party Popper" width="35" height="35" /></h1>
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png?raw=true" width="50" height="50" />
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com/?lines=%F0%9F%91%8B+Hi+There!;I'm+Salman+Toha;Front-End+%26+AI+Powered;Welcome+to+my+profile!%F0%9F%94%A5&center=true&font=Fira+Code&size=38&duration=3800&pause=800&color=00FFFF&background=00000000&width=700&height=100">
+  </a>
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png?raw=true" width="50" height="50" />
+</h1>
 
-<h3 align="center">A passionate frontend developer from Bangladesh</h3>
-
-
-
+<h3 align="center">A passionate Front-End developer from Bangladesh</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=thelunatic1&label=Profile%20views&color=0e75b6&style=flat" alt="thelunatic1" /> </p>
+<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/80728820-e06b-4f96-9c9e-9df46f0cc0a5?raw=true">
+<br><br>
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Dizzy.webp" alt="Dizzy" width="35" height="35" /> About Me:
  I’m currently working on "The Book Heaven"<br><br>I’m currently learning Frontend Dev Programming Hero<br><br>How to reach me ishrak1846@gmail.com
