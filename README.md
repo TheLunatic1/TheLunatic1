@@ -1,9 +1,11 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png?raw=true" width="50" height="50" />
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
+  
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com/?lines=%F0%9F%91%8B+Hi+There!;I'm+Salman+Toha;MERN-Stack+%26+React-Native;IoT+And+Embeded system;AI+Powered;Welcome+to+my+profile!%F0%9F%94%A5&center=true&font=Fira+Code&size=38&duration=3800&pause=800&color=00FFFF&background=00000000&width=700&height=100">
+    <img src="https://readme-typing-svg.herokuapp.com?lines=👋%20Hi%20There!;I'm%20Salman%20Toha;MERN%20Stack%20%26%20React%20Native;IoT%20and%20Embedded%20Systems;AI%20Powered;Welcome%20to%20my%20profile!🔥&center=true&font=Fira%20Code&size=32&duration=3500&pause=800&color=00FFFF&width=700&height=100">
   </a>
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png?raw=true" width="50" height="50" />
+  
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
 </h1>
 
 <h3 align="center">A passionate WEB developer from Bangladesh</h3>
