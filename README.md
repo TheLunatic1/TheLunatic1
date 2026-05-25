@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
   
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&duration=3500&pause=800&color=00FFFF&center=true&vCenter=true&width=700&lines=👋+Hi+There!;I'm+Salman+Toha;MERN+Stack+Developer;Web+Mobile+DevOps+Engineer;AI+Enthusiast+🤖;Welcome+to+my+profile!+🔥">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&duration=3500&pause=800&color=00FFFF&center=true&vCenter=true&width=700&lines=Hi+There!;I'm+Salman+Toha;MERN+Stack+Developer;Web+Mobile+DevOps+Engineer;AI+Enthusiast;Welcome+to+my+profile!">
   </a>
   
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
@@ -83,41 +83,41 @@
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="35" height="35" /> GitHub Stats:
 <p align="center">
   <a href="https://github.com/TheLunatic1">
-    <img src="https://github-readme-stats.vercel.app/api?username=TheLunatic1&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=c9d1d9" alt="GitHub Stats" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=TheLunatic1&show_icons=true&theme=tokyonight&hide_border=false&include_all_commits=true&count_private=true" alt="GitHub Stats" />
   </a>
 </p>
 
-<div align="center">
+<p align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TheLunatic1&theme=tokyonight&hide_border=false&layout=compact" alt="Top Languages" />
+</p>
 
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TheLunatic1&theme=radical&hide_border=true&layout=compact&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9" alt="Top Languages" />
-
-  <br/><br/>
-
-  <img src="https://streak-stats.demolab.com?user=TheLunatic1&theme=radical&hide_border=true&background=0d1117" alt="GitHub Streak" />
-
-</div>
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=TheLunatic1&theme=tokyonight&hide_border=false" alt="GitHub Streak" />
+</p>
 
 ---
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Crown.webp" alt="Crown" width="35" height="35" /> GitHub Trophies
 
-![Trophy](https://github-profile-trophy.vercel.app/?username=TheLunatic1&theme=radical&no-frame=true&no-bg=true&margin-w=5&row=1)
+[![trophy](https://github-profile-trophy.vercel.app/?username=TheLunatic1&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
 
 ---
 
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Writing%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Writing Hand" width="35" height="35" /> Random Dev Quote
-![Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&bg_color=0d1117&text_color=58a6ff)
+
+[![Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)](https://github.com/piyushsuthar/quotes-github-readme)
 
 ---
 
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Top%20Arrow.webp" alt="Top Arrow" width="35" height="35" /> Top Contributed Repo
 
-![Top Repos](https://github-contributor-stats.vercel.app/api?username=TheLunatic1&limit=5&theme=radical&bg_color=0d1117)
+[![](https://github-contributor-stats.vercel.app/api?username=TheLunatic1&limit=5&theme=tokyonight&combine_all_yearly_contributions=true)](https://github.com/ryo-ma/github-contributor-stats)
 
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Thanks+for+visiting!+%F0%9F%98%8A;Feel+free+to+connect+and+collaborate!" />
+  <h3>Thanks for visiting my profile!</h3>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Feel+free+to+connect;Let's+build+something+amazing!" />
 </div>
 
 <div align="center">
