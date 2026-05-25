@@ -2,20 +2,20 @@
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
   
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?lines=👋%20Hi%20There!;I'm%20Salman%20Toha;MERN%20Stack%20%26%20React%20Native;IoT%20and%20Embedded%20Systems;AI%20Powered;Welcome%20to%20my%20profile!🔥&center=true&font=Fira%20Code&size=32&duration=3500&pause=800&color=00FFFF&width=700&height=100">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&duration=3500&pause=800&color=00FFFF&center=true&vCenter=true&width=700&lines=👋+Hi+There!;I'm+Salman+Toha;MERN+Stack+Developer;Web+Mobile+DevOps+Engineer;AI+Enthusiast+🤖;Welcome+to+my+profile!+🔥">
   </a>
   
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="50" height="50" />
 </h1>
 
-<h3 align="center">A passionate WEB developer from Bangladesh</h3>
+<h3 align="center">🚀 Full Stack Developer | Mobile Dev | DevOps Engineer | From Bangladesh 🇧🇩</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=thelunatic1&label=Profile%20views&color=0e75b6&style=flat" alt="thelunatic1" /> </p>
 <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/80728820-e06b-4f96-9c9e-9df46f0cc0a5?raw=true">
 <br><br>
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Dizzy.webp" alt="Dizzy" width="35" height="35" /> About Me:
- I’m currently working on learning React-Native and mastering Typescript<br><br>I’m currently learning Frontend Dev Programming Hero<br><br>How to reach me ishrak1846@gmail.com<br>Check out my Portfolio https://salmantoha.vercel.app/
+💻 Full Stack Developer from Dhaka, Bangladesh<br><br>🎯 Specialized in **MERN Stack**, **React Native**, **Web Development**, and **DevOps**<br><br>🚀 Passionate about building scalable, high-performance applications with cutting-edge technologies<br><br>📚 Currently mastering: **TypeScript**, **DevOps**, **Server Management** & **Cloud Solutions**<br><br>📧 Reach me: **ishrak1846@gmail.com** | 🌐 Portfolio: https://salmantoha.vercel.app/
 
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Bubbles.png" alt="Bubbles" width="35" height="35" /> Socials:
@@ -65,6 +65,14 @@
 [![Cisco](https://img.shields.io/badge/cisco-%23049fd9.svg?style=for-the-badge&logo=cisco&logoColor=black)](https://cisco.com)
 [![Raspberry Pi](https://img.shields.io/badge/-Raspberry_Pi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)](https://raspberrypi.org)
 [![Unreal Engine](https://img.shields.io/badge/unrealengine-%23313131.svg?style=for-the-badge&logo=unrealengine&logoColor=white)](https://unrealengine.com)
+[![Three.js](https://img.shields.io/badge/three.js-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://linux.org)
+[![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)](https://nginx.org)
+[![PM2](https://img.shields.io/badge/pm2-%232B037A.svg?style=for-the-badge&logo=pm2&logoColor=white)](https://pm2.keymetrics.io)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![KVM](https://img.shields.io/badge/KVM-red?style=for-the-badge&logo=linux&logoColor=white)](https://linux-kvm.org)
+[![QEMU](https://img.shields.io/badge/QEMU-FF6600?style=for-the-badge&logo=qemu&logoColor=white)](https://www.qemu.org)
+[![Libvirt](https://img.shields.io/badge/Libvirt-EF1C1C?style=for-the-badge&logo=linux&logoColor=white)](https://libvirt.org)
     </td>
     <td valign="top">
       <img src="https://user-images.githubusercontent.com/74038190/219923809-b86dc415-a0c2-4a38-bc88-ad6cf06395a8.gif?raw=true" width="400">
@@ -75,29 +83,44 @@
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="35" height="35" /> GitHub Stats:
 <p align="center">
   <a href="https://github.com/TheLunatic1">
-    <img src="https://github-readme-stats.vercel.app/api?username=TheLunatic1&theme=dark&hide_border=true&include_all_commits=true&count_private=true" />
+    <img src="https://github-readme-stats.vercel.app/api?username=TheLunatic1&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=c9d1d9" alt="GitHub Stats" />
   </a>
 </p>
 
 <div align="center">
 
-  <img src="https://nirzak-streak-stats.vercel.app/?user=TheLunatic1&theme=dark&hide_border=true" alt="GitHub Streak" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TheLunatic1&theme=radical&hide_border=true&layout=compact&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9" alt="Top Languages" />
 
   <br/><br/>
 
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TheLunatic1&theme=dark&hide_border=true&include_all_commits=true&count_private=true&layout=compact" alt="Top Languages" />
+  <img src="https://streak-stats.demolab.com?user=TheLunatic1&theme=radical&hide_border=true&background=0d1117" alt="GitHub Streak" />
 
 </div>
 
+---
+
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Crown.webp" alt="Crown" width="35" height="35" /> GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=TheLunatic1&theme=radical&no-frame=false&no-bg=true&margin-w=4)
 
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Writing%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Writing Hand Medium-Light Skin Tone" width="35" height="35" /> Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
-
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Top%20Arrow.webp" alt="Top Arrow" width="35" height="35" /> Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=TheLunatic1&limit=5&theme=dark&combine_all_yearly_contributions=true)
+![Trophy](https://github-profile-trophy.vercel.app/?username=TheLunatic1&theme=radical&no-frame=true&no-bg=true&margin-w=5&row=1)
 
 ---
-[![](https://visitcount.itsvg.in/api?id=TheLunatic1&icon=0&color=0)](https://visitcount.itsvg.in)
+
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Writing%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Writing Hand" width="35" height="35" /> Random Dev Quote
+![Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&bg_color=0d1117&text_color=58a6ff)
+
+---
+
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Top%20Arrow.webp" alt="Top Arrow" width="35" height="35" /> Top Contributed Repo
+
+![Top Repos](https://github-contributor-stats.vercel.app/api?username=TheLunatic1&limit=5&theme=radical&bg_color=0d1117)
+
+---
+
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Thanks+for+visiting!+%F0%9F%98%8A;Feel+free+to+connect+and+collaborate!" />
+</div>
+
+<div align="center">
+  <img src="https://visitcount.itsvg.in/api?id=TheLunatic1&icon=0&color=58a6ff" alt="Visit Count" />
+</div>
 
