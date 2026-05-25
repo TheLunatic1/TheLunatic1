@@ -81,19 +81,18 @@
 </table>
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="35" height="35" /> GitHub Stats:
-<p align="center">
-  <a href="https://github.com/TheLunatic1">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=TheLunatic1&show_icons=true&theme=tokyonight&hide_border=false&include_all_commits=true&count_private=true" alt="GitHub Stats" />
-  </a>
-</p>
 
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TheLunatic1&theme=tokyonight&hide_border=false&layout=compact" alt="Top Languages" />
-</p>
+<div align="center">
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=TheLunatic1&show_icons=true&theme=dark" alt="GitHub Stats"/>
+</div>
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=TheLunatic1&theme=tokyonight&hide_border=false" alt="GitHub Streak" />
-</p>
+<div align="center">
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs?username=TheLunatic1&theme=dark&layout=compact" alt="Top Languages"/>
+</div>
+
+<div align="center">
+  <img src="https://streak-stats.demolab.com?user=TheLunatic1&theme=dark" alt="GitHub Streak"/>
+</div>
 
 ---
 
