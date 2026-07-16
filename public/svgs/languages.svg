@@ -24,41 +24,41 @@
   <rect x="1.5" y="1.5" width="437" height="167" rx="14" fill="url(#lang-card-grad)" stroke="url(#lang-border-grad)" stroke-width="1.8" class="glow" />
   <text x="24" y="34" class="title">Most Used Languages</text>
   <g clip-path="url(#bar-clip)">
-    <rect x="24" y="48" width="171.57840000000002" height="10" fill="#f1fa8c" />
-    <rect x="195.57840000000002" y="48" width="133.39759999999998" height="10" fill="#3178c6" />
-    <rect x="328.976" y="48" width="35.672" height="10" fill="#e34f26" />
-    <rect x="364.648" y="48" width="28.1064" height="10" fill="#bd93f9" />
-    <rect x="392.75440000000003" y="48" width="11.6816" height="10" fill="#ff79c6" />
-    <rect x="404.43600000000004" y="48" width="11.524799999999999" height="10" fill="#8be9fd" />
+    <rect x="24" y="48" width="170.48080000000002" height="10" fill="#f1e05a" />
+    <rect x="194.48080000000002" y="48" width="128.8896" height="10" fill="#3178c6" />
+    <rect x="323.3704" y="48" width="35.7112" height="10" fill="#e34c26" />
+    <rect x="359.08160000000004" y="48" width="28.419999999999998" height="10" fill="#663399" />
+    <rect x="387.50160000000005" y="48" width="11.2896" height="10" fill="#c6538c" />
+    <rect x="398.79120000000006" y="48" width="11.1328" height="10" fill="#1d365d" />
   </g>
   <g transform="translate(24, 86)">
-      <circle cx="5" cy="5" r="5" fill="#f1fa8c" />
+      <circle cx="5" cy="5" r="5" fill="#f1e05a" />
       <text x="17" y="9" class="lang-name">JavaScript</text>
-      <text x="99" y="9" class="lang-percent">43.77%</text>
+      <text x="99" y="9" class="lang-percent">43.49%</text>
     </g>
     <g transform="translate(230, 86)">
       <circle cx="5" cy="5" r="5" fill="#3178c6" />
       <text x="17" y="9" class="lang-name">TypeScript</text>
-      <text x="99" y="9" class="lang-percent">34.03%</text>
+      <text x="99" y="9" class="lang-percent">32.88%</text>
     </g>
     <g transform="translate(24, 110)">
-      <circle cx="5" cy="5" r="5" fill="#e34f26" />
+      <circle cx="5" cy="5" r="5" fill="#e34c26" />
       <text x="17" y="9" class="lang-name">HTML</text>
-      <text x="54" y="9" class="lang-percent">9.1%</text>
+      <text x="54" y="9" class="lang-percent">9.11%</text>
     </g>
     <g transform="translate(230, 110)">
-      <circle cx="5" cy="5" r="5" fill="#bd93f9" />
+      <circle cx="5" cy="5" r="5" fill="#663399" />
       <text x="17" y="9" class="lang-name">CSS</text>
-      <text x="46.5" y="9" class="lang-percent">7.17%</text>
+      <text x="46.5" y="9" class="lang-percent">7.25%</text>
     </g>
     <g transform="translate(24, 134)">
-      <circle cx="5" cy="5" r="5" fill="#ff79c6" />
+      <circle cx="5" cy="5" r="5" fill="#c6538c" />
       <text x="17" y="9" class="lang-name">SCSS</text>
-      <text x="54" y="9" class="lang-percent">2.98%</text>
+      <text x="54" y="9" class="lang-percent">2.88%</text>
     </g>
     <g transform="translate(230, 134)">
-      <circle cx="5" cy="5" r="5" fill="#8be9fd" />
+      <circle cx="5" cy="5" r="5" fill="#1d365d" />
       <text x="17" y="9" class="lang-name">Less</text>
-      <text x="54" y="9" class="lang-percent">2.94%</text>
+      <text x="54" y="9" class="lang-percent">2.84%</text>
     </g>
 </svg>
