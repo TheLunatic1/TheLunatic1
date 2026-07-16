@@ -37,7 +37,7 @@
   <g transform="translate(24, 96)">
     <circle cx="7" cy="7" r="4" fill="#34d399" />
     <text x="22" y="11" class="label">Total Commits (2026)</text>
-    <text x="200" y="11" class="value">794</text>
+    <text x="200" y="11" class="value">796</text>
   </g>
 
   <g transform="translate(24, 124)">
