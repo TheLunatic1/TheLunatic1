@@ -13,12 +13,21 @@ if (!fs.existsSync(outputDir)) {
 
 function escapeXML(str) {
   if (str === null || str === undefined) return '';
-  return String(str)
+  let cleaned = String(str)
+    .replace(/[\u2013\u2014]/g, '-') // replace en/em dashes with standard hyphen
+    .replace(/[\u00A0\s]+/g, ' ') // normalize spaces
+    .replace(/[\u0000-\u001F\u007F-\u009F]/g, ''); // strip control characters
+
+  // Escape XML entities
+  cleaned = cleaned
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+
+  // Convert any remaining non-ASCII characters to numeric entities to guarantee pure 100% ASCII XML
+  return cleaned.replace(/[\u0080-\uFFFF]/g, ch => `&#x${ch.charCodeAt(0).toString(16)};`);
 }
 
 // Fallback / initial baseline data matching user profile
@@ -222,12 +231,12 @@ async function fetchGitHubData() {
 
 function generateStatsSVG(data) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
-    .label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; }
-    .value { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 14px; fill: #f8f8f2; }
-    .grade-circle { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 26px; fill: #f8f8f2; text-anchor: middle; }
+    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 15px; fill: #f8f8f2; }
+    .label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 12px; fill: #f8f8f2; }
+    .value { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 12.5px; fill: #f8f8f2; }
+    .grade-circle { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 22px; fill: #f8f8f2; text-anchor: middle; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(189, 147, 249, 0.4)); }
   </style>
   <defs>
@@ -246,50 +255,50 @@ function generateStatsSVG(data) {
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="517" height="217" rx="16" fill="url(#card-grad)" stroke="url(#border-grad)" stroke-width="2" class="glow" />
+  <rect x="1.5" y="1.5" width="517" height="197" rx="14" fill="url(#card-grad)" stroke="url(#border-grad)" stroke-width="1.8" class="glow" />
 
-  <text x="28" y="38" class="title">${escapeXML(data.name)}'s GitHub Analytics</text>
-  <path d="M28 48 H492" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
+  <text x="24" y="34" class="title">${escapeXML(data.name)}'s GitHub Analytics</text>
+  <path d="M24 44 H496" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
 
-  <g transform="translate(28, 73)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-    <text x="26" y="13" class="label">Total Stars Earned:</text>
-    <text x="210" y="13" class="value">${escapeXML(data.totalStars)}</text>
+  <g transform="translate(24, 68)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+    <text x="22" y="11" class="label">Total Stars Earned:</text>
+    <text x="195" y="11" class="value">${escapeXML(data.totalStars)}</text>
   </g>
 
-  <g transform="translate(28, 102)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#50fa7b"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
-    <text x="26" y="13" class="label">Total Commits (2026):</text>
-    <text x="210" y="13" class="value">${escapeXML(data.totalCommits)}</text>
+  <g transform="translate(24, 95)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#50fa7b"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
+    <text x="22" y="11" class="label">Total Commits (2026):</text>
+    <text x="195" y="11" class="value">${escapeXML(data.totalCommits)}</text>
   </g>
 
-  <g transform="translate(28, 131)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#bd93f9"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
-    <text x="26" y="13" class="label">Pull Requests:</text>
-    <text x="210" y="13" class="value">${escapeXML(data.totalPRs)}</text>
+  <g transform="translate(24, 122)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#bd93f9"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
+    <text x="22" y="11" class="label">Pull Requests:</text>
+    <text x="195" y="11" class="value">${escapeXML(data.totalPRs)}</text>
   </g>
 
-  <g transform="translate(28, 160)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#ff79c6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1v9h-8a2.5 2.5 0 0 0-2 2.236V2.5A1 1 0 0 1 3.5 1.5h9ZM3.5 4.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/></svg>
-    <text x="26" y="13" class="label">Contributed to (last year):</text>
-    <text x="210" y="13" class="value">${escapeXML(data.contributedTo)}</text>
+  <g transform="translate(24, 149)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#ff79c6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1v9h-8a2.5 2.5 0 0 0-2 2.236V2.5A1 1 0 0 1 3.5 1.5h9ZM3.5 4.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/></svg>
+    <text x="22" y="11" class="label">Contributed to (last year):</text>
+    <text x="195" y="11" class="value">${escapeXML(data.contributedTo)}</text>
   </g>
 
-  <g transform="translate(395, 120)">
-    <circle cx="0" cy="0" r="42" stroke="#44475a" stroke-width="8" fill="none" />
-    <circle cx="0" cy="0" r="42" stroke="url(#ring-grad)" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="20" stroke-linecap="round" fill="none" transform="rotate(-90)" />
-    <text x="0" y="9" class="grade-circle">${escapeXML(data.grade)}</text>
+  <g transform="translate(415, 110)">
+    <circle cx="0" cy="0" r="38" stroke="#44475a" stroke-width="7" fill="none" />
+    <circle cx="0" cy="0" r="38" stroke="url(#ring-grad)" stroke-width="7" stroke-dasharray="238" stroke-dashoffset="18" stroke-linecap="round" fill="none" transform="rotate(-90)" />
+    <text x="0" y="8" class="grade-circle">${escapeXML(data.grade)}</text>
   </g>
 </svg>`;
 }
 
 function generateLanguagesSVG(data) {
-  let barX = 28;
-  const totalWidth = 384;
+  let barX = 24;
+  const totalWidth = 392;
   
   const barSegments = data.languages.map(lang => {
     const width = Math.max((lang.percent / 100) * totalWidth, 6);
-    const segment = `<rect x="${barX}" y="55" width="${width}" height="12" fill="${lang.color}" />`;
+    const segment = `<rect x="${barX}" y="48" width="${width}" height="10" fill="${lang.color}" />`;
     barX += width;
     return segment;
   }).join('\n    ');
@@ -297,21 +306,21 @@ function generateLanguagesSVG(data) {
   const gridItems = data.languages.map((lang, idx) => {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
-    const x = col === 0 ? 28 : 230;
-    const y = 96 + row * 28;
+    const x = col === 0 ? 24 : 230;
+    const y = 86 + row * 24;
     return `<g transform="translate(${x}, ${y})">
-      <circle cx="6" cy="6" r="6" fill="${lang.color}" />
-      <text x="20" y="10" class="lang-name">${escapeXML(lang.name)}</text>
-      <text x="${lang.name.length * 8 + 30}" y="10" class="lang-percent">${escapeXML(lang.percent)}%</text>
+      <circle cx="5" cy="5" r="5" fill="${lang.color}" />
+      <text x="17" y="9" class="lang-name">${escapeXML(lang.name)}</text>
+      <text x="${lang.name.length * 7.5 + 24}" y="9" class="lang-percent">${escapeXML(lang.percent)}%</text>
     </g>`;
   }).join('\n    ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 440 190" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 440 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
-    .lang-name { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13px; fill: #f8f8f2; }
-    .lang-percent { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 12.5px; fill: #6272a4; }
+    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 15px; fill: #f8f8f2; }
+    .lang-name { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 11.5px; fill: #f8f8f2; }
+    .lang-percent { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 11px; fill: #6272a4; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(139, 233, 253, 0.3)); }
   </style>
   <defs>
@@ -325,12 +334,12 @@ function generateLanguagesSVG(data) {
       <stop offset="100%" stop-color="#ff79c6" />
     </linearGradient>
     <clipPath id="bar-clip">
-      <rect x="28" y="55" width="384" height="12" rx="6" />
+      <rect x="24" y="48" width="392" height="10" rx="5" />
     </clipPath>
   </defs>
 
-  <rect x="1.5" y="1.5" width="437" height="187" rx="16" fill="url(#lang-card-grad)" stroke="url(#lang-border-grad)" stroke-width="2" class="glow" />
-  <text x="28" y="38" class="title">Most Used Languages</text>
+  <rect x="1.5" y="1.5" width="437" height="167" rx="14" fill="url(#lang-card-grad)" stroke="url(#lang-border-grad)" stroke-width="1.8" class="glow" />
+  <text x="24" y="34" class="title">Most Used Languages</text>
   <g clip-path="url(#bar-clip)">
     ${barSegments}
   </g>
@@ -340,13 +349,13 @@ function generateLanguagesSVG(data) {
 
 function generateStreakSVG(data) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 520 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
-    .stat-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 28px; fill: #f8f8f2; text-anchor: middle; }
-    .stat-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; text-anchor: middle; }
-    .stat-sub { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 11.5px; fill: #6272a4; text-anchor: middle; }
-    .streak-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 32px; fill: #ffb86c; text-anchor: middle; }
-    .streak-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 14.5px; fill: #ffb86c; text-anchor: middle; }
+    .stat-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 24px; fill: #f8f8f2; text-anchor: middle; }
+    .stat-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 12px; fill: #f8f8f2; text-anchor: middle; }
+    .stat-sub { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 10.5px; fill: #6272a4; text-anchor: middle; }
+    .streak-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 26px; fill: #ffb86c; text-anchor: middle; }
+    .streak-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 13px; fill: #ffb86c; text-anchor: middle; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(255, 184, 108, 0.4)); }
   </style>
   <defs>
@@ -365,29 +374,28 @@ function generateStreakSVG(data) {
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="517" height="197" rx="16" fill="url(#streak-card-grad)" stroke="url(#streak-border)" stroke-width="2" class="glow" />
+  <rect x="1.5" y="1.5" width="517" height="177" rx="14" fill="url(#streak-card-grad)" stroke="url(#streak-border)" stroke-width="1.8" class="glow" />
 
-  <line x1="173" y1="35" x2="173" y2="165" stroke="#44475a" stroke-width="1" />
-  <line x1="346" y1="35" x2="346" y2="165" stroke="#44475a" stroke-width="1" />
+  <line x1="173" y1="28" x2="173" y2="152" stroke="#44475a" stroke-width="1" />
+  <line x1="346" y1="28" x2="346" y2="152" stroke="#44475a" stroke-width="1" />
 
   <g transform="translate(86, 0)">
-    <text x="0" y="85" class="stat-val">${Number(data.totalContributions).toLocaleString()}</text>
-    <text x="0" y="118" class="stat-label">Total Contributions</text>
-    <text x="0" y="142" class="stat-sub">${escapeXML(data.firstContributionDate)}</text>
+    <text x="0" y="78" class="stat-val">${Number(data.totalContributions).toLocaleString()}</text>
+    <text x="0" y="108" class="stat-label">Total Contributions</text>
+    <text x="0" y="130" class="stat-sub">${escapeXML(data.firstContributionDate)}</text>
   </g>
 
   <g transform="translate(260, 0)">
-    <circle cx="0" cy="72" r="42" stroke="url(#fire-ring)" stroke-width="6" fill="none" />
-    <path d="M-6 40 C-10 46 -10 52 -6 56 C-2 60 2 60 6 56 C10 52 10 46 6 40 C3 36 -3 36 -6 40 Z" fill="#ffb86c" opacity="0.8" />
-    <text x="0" y="82" class="streak-val">${escapeXML(data.currentStreak)}</text>
-    <text x="0" y="142" class="streak-label">Current Streak</text>
-    <text x="0" y="162" class="stat-sub">${escapeXML(data.currentStreakDates)}</text>
+    <circle cx="0" cy="68" r="38" stroke="url(#fire-ring)" stroke-width="5.5" fill="none" />
+    <text x="0" y="77" class="streak-val">${escapeXML(data.currentStreak)}</text>
+    <text x="0" y="130" class="streak-label">Current Streak</text>
+    <text x="0" y="148" class="stat-sub">${escapeXML(data.currentStreakDates)}</text>
   </g>
 
   <g transform="translate(433, 0)">
-    <text x="0" y="85" class="stat-val">${escapeXML(data.longestStreak)}</text>
-    <text x="0" y="118" class="stat-label">Longest Streak</text>
-    <text x="0" y="142" class="stat-sub">${escapeXML(data.longestStreakDates)}</text>
+    <text x="0" y="78" class="stat-val">${escapeXML(data.longestStreak)}</text>
+    <text x="0" y="108" class="stat-label">Longest Streak</text>
+    <text x="0" y="130" class="stat-sub">${escapeXML(data.longestStreakDates)}</text>
   </g>
 </svg>`;
 }
@@ -409,20 +417,20 @@ function generateTrophiesSVG(data) {
   const trophyCards = data.trophies.map((t, idx) => {
     const x = 16 + idx * 202;
     const iconSVG = getVectorIcon(t.iconType || 'streak', t.color);
-    return `<g transform="translate(${x}, 16)">
-      <rect x="0" y="0" width="186" height="128" rx="12" fill="#1e1f29" stroke="${t.color}" stroke-width="1.5" />
-      <circle cx="93" cy="38" r="20" fill="${t.color}" fill-opacity="0.15" />
-      <g transform="translate(81, 26)">
-        <svg width="24" height="24" viewBox="0 0 24 24">${iconSVG}</svg>
+    return `<g transform="translate(${x}, 14)">
+      <rect x="0" y="0" width="186" height="116" rx="10" fill="#1e1f29" stroke="${t.color}" stroke-width="1.5" />
+      <circle cx="93" cy="34" r="18" fill="${t.color}" fill-opacity="0.15" />
+      <g transform="translate(82, 23)">
+        <svg width="22" height="22" viewBox="0 0 24 24">${iconSVG}</svg>
       </g>
-      <text x="93" y="80" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14" fill="#f8f8f2" text-anchor="middle">${escapeXML(t.title)}</text>
-      <rect x="53" y="88" width="80" height="18" rx="9" fill="${t.color}" fill-opacity="0.2" />
-      <text x="93" y="101" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11" fill="${t.color}" text-anchor="middle">${escapeXML(t.tier)}</text>
+      <text x="93" y="72" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="12.5" fill="#f8f8f2" text-anchor="middle">${escapeXML(t.title)}</text>
+      <rect x="55" y="81" width="76" height="17" rx="8.5" fill="${t.color}" fill-opacity="0.2" />
+      <text x="93" y="93" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="${t.color}" text-anchor="middle">${escapeXML(t.tier)}</text>
     </g>`;
   }).join('\n  ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 840 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 840 144" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <defs>
     <linearGradient id="trophy-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#282a36" />
@@ -436,7 +444,7 @@ function generateTrophiesSVG(data) {
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="837" height="157" rx="16" fill="url(#trophy-bg)" stroke="url(#trophy-border)" stroke-width="2" />
+  <rect x="1.5" y="1.5" width="837" height="141" rx="14" fill="url(#trophy-bg)" stroke="url(#trophy-border)" stroke-width="1.8" />
   ${trophyCards}
 </svg>`;
 }
@@ -446,26 +454,26 @@ function generateTopReposSVG(data) {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
     const x = col === 0 ? 16 : 426;
-    const y = 56 + row * 84;
+    const y = 50 + row * 76;
     const rawDesc = repo.desc || '';
     const truncatedDesc = rawDesc.length > 46 ? rawDesc.substring(0, 44) + '...' : rawDesc;
     return `<g transform="translate(${x}, ${y})">
-      <rect x="0" y="0" width="398" height="74" rx="10" fill="#1e1f29" stroke="#44475a" stroke-width="1" />
-      <text x="16" y="26" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14.5" fill="#8be9fd">${escapeXML(repo.name)}</text>
-      <text x="16" y="46" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="400" font-size="12" fill="#6272a4">${escapeXML(truncatedDesc)}</text>
-      <circle cx="20" cy="62" r="5" fill="${repo.color}" />
-      <text x="32" y="65" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11.5" fill="#f8f8f2">${escapeXML(repo.lang)}</text>
-      <g transform="translate(320, 55)">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-        <text x="17" y="11" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="12" fill="#f8f8f2">${escapeXML(repo.stars)}</text>
+      <rect x="0" y="0" width="398" height="66" rx="8" fill="#1e1f29" stroke="#44475a" stroke-width="1" />
+      <text x="14" y="24" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="13" fill="#8be9fd">${escapeXML(repo.name)}</text>
+      <text x="14" y="42" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="400" font-size="11" fill="#6272a4">${escapeXML(truncatedDesc)}</text>
+      <circle cx="18" cy="54" r="4.5" fill="${repo.color}" />
+      <text x="28" y="57" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="#f8f8f2">${escapeXML(repo.lang)}</text>
+      <g transform="translate(330, 46)">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        <text x="16" y="10" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11" fill="#f8f8f2">${escapeXML(repo.stars)}</text>
       </g>
     </g>`;
   }).join('\n  ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 840 236" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 840 216" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
+    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 15px; fill: #f8f8f2; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(139, 233, 253, 0.3)); }
   </style>
   <defs>
@@ -480,15 +488,15 @@ function generateTopReposSVG(data) {
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="837" height="233" rx="16" fill="url(#repos-bg)" stroke="url(#repos-border)" stroke-width="2" class="glow" />
-  <text x="28" y="38" class="title">Top Contributed &amp; Featured Repositories</text>
-  <path d="M28 48 H812" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
+  <rect x="1.5" y="1.5" width="837" height="213" rx="14" fill="url(#repos-bg)" stroke="url(#repos-border)" stroke-width="1.8" class="glow" />
+  <text x="24" y="34" class="title">Top Contributed &amp; Featured Repositories</text>
+  <path d="M24 44 H816" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
   ${repoCards}
 </svg>`;
 }
 
 async function main() {
-  console.log('Generating clean, professional executive profile SVGs with full XML escaping...');
+  console.log('Generating clean, compact, proportional profile SVGs with pure ASCII XML escaping...');
   const data = await fetchGitHubData();
 
   fs.writeFileSync(path.join(outputDir, 'stats.svg'), generateStatsSVG(data), 'utf8');

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
-    .label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; }
-    .value { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 14px; fill: #f8f8f2; }
-    .grade-circle { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 26px; fill: #f8f8f2; text-anchor: middle; }
+    .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 15px; fill: #f8f8f2; }
+    .label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 12px; fill: #f8f8f2; }
+    .value { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 12.5px; fill: #f8f8f2; }
+    .grade-circle { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 22px; fill: #f8f8f2; text-anchor: middle; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(189, 147, 249, 0.4)); }
   </style>
   <defs>
@@ -23,38 +23,38 @@
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="517" height="217" rx="16" fill="url(#card-grad)" stroke="url(#border-grad)" stroke-width="2" class="glow" />
+  <rect x="1.5" y="1.5" width="517" height="197" rx="14" fill="url(#card-grad)" stroke="url(#border-grad)" stroke-width="1.8" class="glow" />
 
-  <text x="28" y="38" class="title">Salman Toha's GitHub Analytics</text>
-  <path d="M28 48 H492" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
+  <text x="24" y="34" class="title">Salman Toha's GitHub Analytics</text>
+  <path d="M24 44 H496" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
 
-  <g transform="translate(28, 73)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-    <text x="26" y="13" class="label">Total Stars Earned:</text>
-    <text x="210" y="13" class="value">38</text>
+  <g transform="translate(24, 68)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+    <text x="22" y="11" class="label">Total Stars Earned:</text>
+    <text x="195" y="11" class="value">38</text>
   </g>
 
-  <g transform="translate(28, 102)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#50fa7b"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
-    <text x="26" y="13" class="label">Total Commits (2026):</text>
-    <text x="210" y="13" class="value">793</text>
+  <g transform="translate(24, 95)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#50fa7b"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
+    <text x="22" y="11" class="label">Total Commits (2026):</text>
+    <text x="195" y="11" class="value">790</text>
   </g>
 
-  <g transform="translate(28, 131)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#bd93f9"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
-    <text x="26" y="13" class="label">Pull Requests:</text>
-    <text x="210" y="13" class="value">1</text>
+  <g transform="translate(24, 122)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#bd93f9"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
+    <text x="22" y="11" class="label">Pull Requests:</text>
+    <text x="195" y="11" class="value">1</text>
   </g>
 
-  <g transform="translate(28, 160)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#ff79c6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1v9h-8a2.5 2.5 0 0 0-2 2.236V2.5A1 1 0 0 1 3.5 1.5h9ZM3.5 4.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/></svg>
-    <text x="26" y="13" class="label">Contributed to (last year):</text>
-    <text x="210" y="13" class="value">38</text>
+  <g transform="translate(24, 149)">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="#ff79c6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1v9h-8a2.5 2.5 0 0 0-2 2.236V2.5A1 1 0 0 1 3.5 1.5h9ZM3.5 4.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/></svg>
+    <text x="22" y="11" class="label">Contributed to (last year):</text>
+    <text x="195" y="11" class="value">2</text>
   </g>
 
-  <g transform="translate(395, 120)">
-    <circle cx="0" cy="0" r="42" stroke="#44475a" stroke-width="8" fill="none" />
-    <circle cx="0" cy="0" r="42" stroke="url(#ring-grad)" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="20" stroke-linecap="round" fill="none" transform="rotate(-90)" />
-    <text x="0" y="9" class="grade-circle">A+</text>
+  <g transform="translate(415, 110)">
+    <circle cx="0" cy="0" r="38" stroke="#44475a" stroke-width="7" fill="none" />
+    <circle cx="0" cy="0" r="38" stroke="url(#ring-grad)" stroke-width="7" stroke-dasharray="238" stroke-dashoffset="18" stroke-linecap="round" fill="none" transform="rotate(-90)" />
+    <text x="0" y="8" class="grade-circle">A+</text>
   </g>
 </svg>
