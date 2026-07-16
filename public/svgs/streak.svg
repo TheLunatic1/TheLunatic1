@@ -30,9 +30,9 @@
   <line x1="346" y1="35" x2="346" y2="165" stroke="#44475a" stroke-width="1" />
 
   <g transform="translate(86, 0)">
-    <text x="0" y="85" class="stat-val">1,220</text>
+    <text x="0" y="85" class="stat-val">1,138</text>
     <text x="0" y="118" class="stat-label">Total Contributions</text>
-    <text x="0" y="142" class="stat-sub">Sep 6, 2022 - Present</text>
+    <text x="0" y="142" class="stat-sub">Sep 2022 - Present</text>
   </g>
 
   <g transform="translate(260, 0)">
@@ -40,12 +40,12 @@
     <path d="M-6 40 C-10 46 -10 52 -6 56 C-2 60 2 60 6 56 C10 52 10 46 6 40 C3 36 -3 36 -6 40 Z" fill="#ffb86c" opacity="0.8" />
     <text x="0" y="82" class="streak-val">2</text>
     <text x="0" y="142" class="streak-label">Current Streak</text>
-    <text x="0" y="162" class="stat-sub">Jul 13 - Jul 14</text>
+    <text x="0" y="162" class="stat-sub">Active Streak</text>
   </g>
 
   <g transform="translate(433, 0)">
     <text x="0" y="85" class="stat-val">10</text>
     <text x="0" y="118" class="stat-label">Longest Streak</text>
-    <text x="0" y="142" class="stat-sub">Jun 11 - Jun 20</text>
+    <text x="0" y="142" class="stat-sub">Record Streak</text>
   </g>
 </svg>
