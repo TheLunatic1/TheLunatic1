@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 520 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 520 172" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
-    .stat-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 24px; fill: #f8f8f2; text-anchor: middle; }
-    .stat-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 12px; fill: #f8f8f2; text-anchor: middle; }
-    .stat-sub { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 10.5px; fill: #6272a4; text-anchor: middle; }
-    .streak-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 26px; fill: #ffb86c; text-anchor: middle; }
-    .streak-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 13px; fill: #ffb86c; text-anchor: middle; }
-    .glow { filter: drop-shadow(0px 0px 8px rgba(255, 184, 108, 0.4)); }
+    .stat-val { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 800; font-size: 24px; fill: #f8fafc; text-anchor: middle; }
+    .stat-label { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 600; font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+    .stat-sub { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 500; font-size: 11px; fill: #64748b; text-anchor: middle; }
+    .streak-val { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 800; font-size: 26px; fill: #fbbf24; text-anchor: middle; }
+    .streak-label { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 12.5px; fill: #fbbf24; text-anchor: middle; }
+    .glow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.5)); }
   </style>
   <defs>
-    <linearGradient id="streak-card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#282a36" />
-      <stop offset="100%" stop-color="#1e1f29" />
+    <linearGradient id="bg-grad-streak" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1117" />
+      <stop offset="100%" stop-color="#161923" />
     </linearGradient>
-    <linearGradient id="streak-border" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffb86c" />
-      <stop offset="50%" stop-color="#ff79c6" />
-      <stop offset="100%" stop-color="#bd93f9" />
+    <linearGradient id="border-streak" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#f43f5e" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6" />
     </linearGradient>
     <linearGradient id="fire-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffb86c" />
-      <stop offset="100%" stop-color="#ff5555" />
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f97316" />
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="517" height="177" rx="14" fill="url(#streak-card-grad)" stroke="url(#streak-border)" stroke-width="1.8" class="glow" />
+  <rect x="1" y="1" width="518" height="170" rx="14" fill="url(#bg-grad-streak)" stroke="url(#border-streak)" stroke-width="1.5" class="glow" />
 
-  <line x1="173" y1="28" x2="173" y2="152" stroke="#44475a" stroke-width="1" />
-  <line x1="346" y1="28" x2="346" y2="152" stroke="#44475a" stroke-width="1" />
+  <line x1="173" y1="26" x2="173" y2="146" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+  <line x1="346" y1="26" x2="346" y2="146" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
 
   <g transform="translate(86, 0)">
-    <text x="0" y="78" class="stat-val">1,220</text>
-    <text x="0" y="108" class="stat-label">Total Contributions</text>
-    <text x="0" y="130" class="stat-sub">Sep 6, 2022 - Present</text>
+    <text x="0" y="74" class="stat-val">1,138</text>
+    <text x="0" y="104" class="stat-label">Total Contributions</text>
+    <text x="0" y="126" class="stat-sub">Sep 2022 - Present</text>
   </g>
 
   <g transform="translate(260, 0)">
-    <circle cx="0" cy="68" r="38" stroke="url(#fire-ring)" stroke-width="5.5" fill="none" />
-    <text x="0" y="77" class="streak-val">2</text>
-    <text x="0" y="130" class="streak-label">Current Streak</text>
-    <text x="0" y="148" class="stat-sub">Jul 13 - Jul 14</text>
+    <circle cx="0" cy="65" r="36" stroke="url(#fire-ring)" stroke-width="5" fill="none" />
+    <text x="0" y="74" class="streak-val">2</text>
+    <text x="0" y="124" class="streak-label">Current Streak</text>
+    <text x="0" y="142" class="stat-sub">Active Streak</text>
   </g>
 
   <g transform="translate(433, 0)">
-    <text x="0" y="78" class="stat-val">10</text>
-    <text x="0" y="108" class="stat-label">Longest Streak</text>
-    <text x="0" y="130" class="stat-sub">Jun 11 - Jun 20</text>
+    <text x="0" y="74" class="stat-val">10</text>
+    <text x="0" y="104" class="stat-label">Longest Streak</text>
+    <text x="0" y="126" class="stat-sub">Record Streak</text>
   </g>
 </svg>

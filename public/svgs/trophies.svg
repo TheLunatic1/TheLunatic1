@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 840 144" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 840 142" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <defs>
-    <linearGradient id="trophy-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#282a36" />
-      <stop offset="100%" stop-color="#181920" />
+    <linearGradient id="bg-grad-trophy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1117" />
+      <stop offset="100%" stop-color="#161923" />
     </linearGradient>
-    <linearGradient id="trophy-border" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f1fa8c" />
-      <stop offset="33%" stop-color="#50fa7b" />
-      <stop offset="66%" stop-color="#ff79c6" />
-      <stop offset="100%" stop-color="#8be9fd" />
+    <linearGradient id="border-trophy" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6" />
+      <stop offset="33%" stop-color="#34d399" stop-opacity="0.6" />
+      <stop offset="66%" stop-color="#a855f7" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.6" />
     </linearGradient>
   </defs>
 
-  <rect x="1.5" y="1.5" width="837" height="141" rx="14" fill="url(#trophy-bg)" stroke="url(#trophy-border)" stroke-width="1.8" />
+  <rect x="1" y="1" width="838" height="140" rx="14" fill="url(#bg-grad-trophy)" stroke="url(#border-trophy)" stroke-width="1.5" />
   <g transform="translate(16, 14)">
-      <rect x="0" y="0" width="186" height="116" rx="10" fill="#1e1f29" stroke="#f1fa8c" stroke-width="1.5" />
-      <circle cx="93" cy="34" r="18" fill="#f1fa8c" fill-opacity="0.15" />
-      <g transform="translate(82, 23)">
-        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#f1fa8c"/></svg>
+      <rect x="0" y="0" width="186" height="114" rx="10" fill="#131620" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" />
+      <circle cx="93" cy="34" r="16" fill="#fbbf24" fill-opacity="0.12" />
+      <g transform="translate(83, 24)">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#fbbf24"/></svg>
       </g>
-      <text x="93" y="72" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="12.5" fill="#f8f8f2" text-anchor="middle">MultiLang Master</text>
-      <rect x="55" y="81" width="76" height="17" rx="8.5" fill="#f1fa8c" fill-opacity="0.2" />
-      <text x="93" y="93" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="#f1fa8c" text-anchor="middle">Gold Tier</text>
+      <text x="93" y="70" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="12px" fill="#f8fafc" text-anchor="middle">MultiLang Master</text>
+      <rect x="55" y="80" width="76" height="18" rx="9" fill="#fbbf24" fill-opacity="0.15" />
+      <text x="93" y="93" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10px" fill="#fbbf24" text-anchor="middle">Gold Tier</text>
     </g>
   <g transform="translate(218, 14)">
-      <rect x="0" y="0" width="186" height="116" rx="10" fill="#1e1f29" stroke="#50fa7b" stroke-width="1.5" />
-      <circle cx="93" cy="34" r="18" fill="#50fa7b" fill-opacity="0.15" />
-      <g transform="translate(82, 23)">
-        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M17 12c0-2.5-1.85-4.59-4.26-4.94l1.63-1.63c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-3.35 3.35c-.39.39-.39 1.02 0 1.41l3.35 3.35c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.63-1.63C15.15 9.41 17 11.5 17 14H5c0-3.31 2.69-6 6-6v-2c-4.42 0-8 3.58-8 8h16c0-.69-.1-1.35-.29-1.98z" fill="#50fa7b"/></svg>
+      <rect x="0" y="0" width="186" height="114" rx="10" fill="#131620" stroke="#34d399" stroke-width="1.2" stroke-opacity="0.6" />
+      <circle cx="93" cy="34" r="16" fill="#34d399" fill-opacity="0.12" />
+      <g transform="translate(83, 24)">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M17 12c0-2.5-1.85-4.59-4.26-4.94l1.63-1.63c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-3.35 3.35c-.39.39-.39 1.02 0 1.41l3.35 3.35c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.63-1.63C15.15 9.41 17 11.5 17 14H5c0-3.31 2.69-6 6-6v-2c-4.42 0-8 3.58-8 8h16c0-.69-.1-1.35-.29-1.98z" fill="#34d399"/></svg>
       </g>
-      <text x="93" y="72" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="12.5" fill="#f8f8f2" text-anchor="middle">Commit Consistency</text>
-      <rect x="55" y="81" width="76" height="17" rx="8.5" fill="#50fa7b" fill-opacity="0.2" />
-      <text x="93" y="93" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="#50fa7b" text-anchor="middle">Gold Tier</text>
+      <text x="93" y="70" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="12px" fill="#f8fafc" text-anchor="middle">Commit Consistency</text>
+      <rect x="55" y="80" width="76" height="18" rx="9" fill="#34d399" fill-opacity="0.15" />
+      <text x="93" y="93" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10px" fill="#34d399" text-anchor="middle">Gold Tier</text>
     </g>
   <g transform="translate(420, 14)">
-      <rect x="0" y="0" width="186" height="116" rx="10" fill="#1e1f29" stroke="#ff79c6" stroke-width="1.5" />
-      <circle cx="93" cy="34" r="18" fill="#ff79c6" fill-opacity="0.15" />
-      <g transform="translate(82, 23)">
-        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" fill="#ff79c6"/></svg>
+      <rect x="0" y="0" width="186" height="114" rx="10" fill="#131620" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.6" />
+      <circle cx="93" cy="34" r="16" fill="#a855f7" fill-opacity="0.12" />
+      <g transform="translate(83, 24)">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" fill="#a855f7"/></svg>
       </g>
-      <text x="93" y="72" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="12.5" fill="#f8f8f2" text-anchor="middle">Full Stack Architect</text>
-      <rect x="55" y="81" width="76" height="17" rx="8.5" fill="#ff79c6" fill-opacity="0.2" />
-      <text x="93" y="93" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="#ff79c6" text-anchor="middle">Platinum Tier</text>
+      <text x="93" y="70" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="12px" fill="#f8fafc" text-anchor="middle">Full Stack Architect</text>
+      <rect x="55" y="80" width="76" height="18" rx="9" fill="#a855f7" fill-opacity="0.15" />
+      <text x="93" y="93" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10px" fill="#a855f7" text-anchor="middle">Platinum Tier</text>
     </g>
   <g transform="translate(622, 14)">
-      <rect x="0" y="0" width="186" height="116" rx="10" fill="#1e1f29" stroke="#8be9fd" stroke-width="1.5" />
-      <circle cx="93" cy="34" r="18" fill="#8be9fd" fill-opacity="0.15" />
-      <g transform="translate(82, 23)">
-        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#8be9fd"/></svg>
+      <rect x="0" y="0" width="186" height="114" rx="10" fill="#131620" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.6" />
+      <circle cx="93" cy="34" r="16" fill="#38bdf8" fill-opacity="0.12" />
+      <g transform="translate(83, 24)">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#38bdf8"/></svg>
       </g>
-      <text x="93" y="72" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="12.5" fill="#f8f8f2" text-anchor="middle">Record Streak</text>
-      <rect x="55" y="81" width="76" height="17" rx="8.5" fill="#8be9fd" fill-opacity="0.2" />
-      <text x="93" y="93" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="10.5" fill="#8be9fd" text-anchor="middle">Silver Tier</text>
+      <text x="93" y="70" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="12px" fill="#f8fafc" text-anchor="middle">Record Streak</text>
+      <rect x="55" y="80" width="76" height="18" rx="9" fill="#38bdf8" fill-opacity="0.15" />
+      <text x="93" y="93" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10px" fill="#38bdf8" text-anchor="middle">Silver Tier</text>
     </g>
 </svg>
