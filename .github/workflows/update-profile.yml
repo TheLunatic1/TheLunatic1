@@ -1,0 +1,44 @@
+name: Update Custom Profile SVGs
+
+on:
+  schedule:
+    # Run twice daily at 00:00 and 12:00 UTC
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'scripts/**'
+
+jobs:
+  generate-cards:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Custom Profile SVGs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/generate-cards.js
+
+      - name: Commit and Push Updated SVGs
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/svgs/*.svg
+          if git diff --staged --quiet; then
+            echo "No changes to SVGs, working tree clean."
+          else
+            git commit -m "⚡ Auto-update custom profile SVGs [skip ci]"
+            git push
+          fi

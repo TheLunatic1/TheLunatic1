@@ -1,0 +1,55 @@
+<svg width="100%" height="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+  <style>
+    .stat-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 28px; fill: #f8f8f2; text-anchor: middle; }
+    .stat-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; text-anchor: middle; }
+    .stat-sub { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 500; font-size: 11.5px; fill: #6272a4; text-anchor: middle; }
+    .streak-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 32px; fill: #ffb86c; text-anchor: middle; }
+    .streak-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 14.5px; fill: #ffb86c; text-anchor: middle; }
+    .glow { filter: drop-shadow(0px 0px 8px rgba(255, 184, 108, 0.4)); }
+  </style>
+  <defs>
+    <linearGradient id="streak-card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282a36" />
+      <stop offset="100%" stop-color="#1e1f29" />
+    </linearGradient>
+    <linearGradient id="streak-border" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffb86c" />
+      <stop offset="50%" stop-color="#ff79c6" />
+      <stop offset="100%" stop-color="#bd93f9" />
+    </linearGradient>
+    <linearGradient id="fire-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb86c" />
+      <stop offset="100%" stop-color="#ff5555" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="1.5" y="1.5" width="517" height="197" rx="16" fill="url(#streak-card-grad)" stroke="url(#streak-border)" stroke-width="2" class="glow" />
+
+  <!-- Column Dividers -->
+  <line x1="173" y1="35" x2="173" y2="165" stroke="#44475a" stroke-width="1" />
+  <line x1="346" y1="35" x2="346" y2="165" stroke="#44475a" stroke-width="1" />
+
+  <!-- Column 1: Total Contributions -->
+  <g transform="translate(86, 0)">
+    <text x="0" y="85" class="stat-val">1,220</text>
+    <text x="0" y="118" class="stat-label">Total Contributions</text>
+    <text x="0" y="142" class="stat-sub">Sep 6, 2022 - Present</text>
+  </g>
+
+  <!-- Column 2: Current Streak (Center with Fire Ring) -->
+  <g transform="translate(260, 0)">
+    <circle cx="0" cy="72" r="42" stroke="url(#fire-ring)" stroke-width="6" fill="none" />
+    <text x="0" y="32" font-size="20" text-anchor="middle">🔥</text>
+    <text x="0" y="82" class="streak-val">2</text>
+    <text x="0" y="142" class="streak-label">Current Streak</text>
+    <text x="0" y="162" class="stat-sub">Jul 13 - Jul 14</text>
+  </g>
+
+  <!-- Column 3: Longest Streak -->
+  <g transform="translate(433, 0)">
+    <text x="0" y="85" class="stat-val">10</text>
+    <text x="0" y="118" class="stat-label">Longest Streak</text>
+    <text x="0" y="142" class="stat-sub">Jun 11 - Jun 20</text>
+  </g>
+</svg>
