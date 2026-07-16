@@ -11,7 +11,17 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Fallback / initial baseline data (matches marked user profile exactly)
+function escapeXML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+// Fallback / initial baseline data matching user profile
 const defaultData = {
   name: 'Salman Toha',
   totalStars: 38,
@@ -35,23 +45,22 @@ const defaultData = {
     { name: 'Less', percent: 2.94, color: '#8be9fd' },
   ],
   trophies: [
-    { title: 'MultiLang Master', tier: 'Gold Tier', desc: 'Used 6+ Languages', color: '#f1fa8c', icon: '🏆' },
-    { title: 'Commit Beast', tier: 'Gold Tier', desc: '790+ Commits in 2026', color: '#50fa7b', icon: '🚀' },
-    { title: 'AI & MERN Pioneer', tier: 'Platinum Tier', desc: 'Full Stack Architect', color: '#ff79c6', icon: '🧠' },
-    { title: 'Streak Legend', tier: 'Silver Tier', desc: '10 Day Streak Record', color: '#8be9fd', icon: '🔥' }
+    { title: 'MultiLang Master', tier: 'Gold Tier', desc: 'Used 6+ Languages', color: '#f1fa8c', iconType: 'lang' },
+    { title: 'Commit Consistency', tier: 'Gold Tier', desc: '790+ Commits in 2026', color: '#50fa7b', iconType: 'commit' },
+    { title: 'Full Stack Architect', tier: 'Platinum Tier', desc: 'MERN & Mobile Systems', color: '#ff79c6', iconType: 'arch' },
+    { title: 'Record Streak', tier: 'Silver Tier', desc: '10 Day Contribution Streak', color: '#8be9fd', iconType: 'streak' }
   ],
   topRepos: [
-    { name: 'TheLunatic1 / TheLunatic1', desc: 'Cyberpunk Self-Hosted Profile & Analytics Engine', stars: 12, commits: 180, lang: 'JavaScript', color: '#f1fa8c' },
-    { name: 'TheLunatic1 / MERN-AI-Portal', desc: 'Full Stack MERN Architecture with AI Assistant Integration', stars: 10, commits: 240, lang: 'TypeScript', color: '#3178c6' },
+    { name: 'TheLunatic1 / TheLunatic1', desc: 'Profile Analytics & Automated Workflow Engine', stars: 12, commits: 180, lang: 'JavaScript', color: '#f1fa8c' },
+    { name: 'TheLunatic1 / MERN-AI-Portal', desc: 'Full Stack MERN Architecture with AI Integration', stars: 10, commits: 240, lang: 'TypeScript', color: '#3178c6' },
     { name: 'TheLunatic1 / DevOps-Cloud-Infra', desc: 'Docker, Linux CI/CD Pipelines & Server Management', stars: 9, commits: 150, lang: 'Shell', color: '#50fa7b' },
-    { name: 'TheLunatic1 / React-Native-SuperApp', desc: 'Cross-platform mobile experience with modern UI/UX', stars: 7, commits: 220, lang: 'JavaScript', color: '#ff79c6' }
+    { name: 'TheLunatic1 / React-Native-SuperApp', desc: 'Cross-platform mobile architecture and UI/UX', stars: 7, commits: 220, lang: 'JavaScript', color: '#ff79c6' }
   ]
 };
 
-// Helper for HTTP requests if GITHUB_TOKEN is present
 async function fetchGitHubData() {
   if (!GITHUB_TOKEN) {
-    console.log('No GITHUB_TOKEN provided. Using initial baseline data for generation...');
+    console.log('No GITHUB_TOKEN provided. Using baseline profile data...');
     return defaultData;
   }
 
@@ -132,7 +141,7 @@ async function fetchGitHubData() {
       if (repo.name && !repo.name.startsWith('.')) {
         repoList.push({
           name: `${USERNAME} / ${repo.name}`,
-          desc: repo.description || 'Full Stack & Systems Development Repository',
+          desc: repo.description || 'Full Stack & Systems Architecture Repository',
           stars: repo.stargazers.totalCount,
           commits: Math.floor(Math.random() * 80) + 40,
           lang: topLang?.name || 'Code',
@@ -174,7 +183,7 @@ async function fetchGitHubData() {
         if (i >= days.length - 2) todayOrYesterdayActive = true;
       } else {
         if (i >= days.length - 2 && !todayOrYesterdayActive) {
-          // No contributions today or yesterday => current streak is 0
+          // No contributions today or yesterday
         } else if (currentStreak === 0 && tempStreak > 0) {
           currentStreak = tempStreak;
         }
@@ -211,9 +220,9 @@ async function fetchGitHubData() {
   }
 }
 
-// Generate Stats SVG (Responsive 100% width preserving exact 520x220 aspect ratio)
 function generateStatsSVG(data) {
-  const svg = `<svg width="100%" height="100%" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
     .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
     .label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; }
@@ -237,53 +246,43 @@ function generateStatsSVG(data) {
     </linearGradient>
   </defs>
 
-  <!-- Background Card -->
   <rect x="1.5" y="1.5" width="517" height="217" rx="16" fill="url(#card-grad)" stroke="url(#border-grad)" stroke-width="2" class="glow" />
 
-  <!-- Card Title -->
-  <text x="28" y="38" class="title">${data.name}'s GitHub Stats</text>
+  <text x="28" y="38" class="title">${escapeXML(data.name)}'s GitHub Analytics</text>
   <path d="M28 48 H492" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
 
-  <!-- Left Stats Rows -->
-  <!-- Stars -->
   <g transform="translate(28, 73)">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
     <text x="26" y="13" class="label">Total Stars Earned:</text>
-    <text x="210" y="13" class="value">${data.totalStars}</text>
+    <text x="210" y="13" class="value">${escapeXML(data.totalStars)}</text>
   </g>
 
-  <!-- Commits -->
   <g transform="translate(28, 102)">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="#50fa7b"><path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/></svg>
     <text x="26" y="13" class="label">Total Commits (2026):</text>
-    <text x="210" y="13" class="value">${data.totalCommits}</text>
+    <text x="210" y="13" class="value">${escapeXML(data.totalCommits)}</text>
   </g>
 
-  <!-- PRs -->
   <g transform="translate(28, 131)">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="#bd93f9"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"/></svg>
-    <text x="26" y="13" class="label">Total PRs:</text>
-    <text x="210" y="13" class="value">${data.totalPRs}</text>
+    <text x="26" y="13" class="label">Pull Requests:</text>
+    <text x="210" y="13" class="value">${escapeXML(data.totalPRs)}</text>
   </g>
 
-  <!-- Contributed To -->
   <g transform="translate(28, 160)">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="#ff79c6"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1v9h-8a2.5 2.5 0 0 0-2 2.236V2.5A1 1 0 0 1 3.5 1.5h9ZM3.5 4.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/></svg>
     <text x="26" y="13" class="label">Contributed to (last year):</text>
-    <text x="210" y="13" class="value">${data.contributedTo}</text>
+    <text x="210" y="13" class="value">${escapeXML(data.contributedTo)}</text>
   </g>
 
-  <!-- Right Grade Circle Badge -->
   <g transform="translate(395, 120)">
     <circle cx="0" cy="0" r="42" stroke="#44475a" stroke-width="8" fill="none" />
     <circle cx="0" cy="0" r="42" stroke="url(#ring-grad)" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="20" stroke-linecap="round" fill="none" transform="rotate(-90)" />
-    <text x="0" y="9" class="grade-circle">${data.grade}</text>
+    <text x="0" y="9" class="grade-circle">${escapeXML(data.grade)}</text>
   </g>
 </svg>`;
-  return svg;
 }
 
-// Generate Languages SVG (Responsive 100% width preserving exact 440x190 aspect ratio)
 function generateLanguagesSVG(data) {
   let barX = 28;
   const totalWidth = 384;
@@ -302,12 +301,13 @@ function generateLanguagesSVG(data) {
     const y = 96 + row * 28;
     return `<g transform="translate(${x}, ${y})">
       <circle cx="6" cy="6" r="6" fill="${lang.color}" />
-      <text x="20" y="10" class="lang-name">${lang.name}</text>
-      <text x="${lang.name.length * 8 + 30}" y="10" class="lang-percent">${lang.percent}%</text>
+      <text x="20" y="10" class="lang-name">${escapeXML(lang.name)}</text>
+      <text x="${lang.name.length * 8 + 30}" y="10" class="lang-percent">${escapeXML(lang.percent)}%</text>
     </g>`;
   }).join('\n    ');
 
-  const svg = `<svg width="100%" height="100%" viewBox="0 0 440 190" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; display: block; margin: 0 auto;">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 440 190" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; display: block; margin: 0 auto;">
   <style>
     .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
     .lang-name { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13px; fill: #f8f8f2; }
@@ -329,26 +329,18 @@ function generateLanguagesSVG(data) {
     </clipPath>
   </defs>
 
-  <!-- Background Card -->
   <rect x="1.5" y="1.5" width="437" height="187" rx="16" fill="url(#lang-card-grad)" stroke="url(#lang-border-grad)" stroke-width="2" class="glow" />
-
-  <!-- Card Title -->
   <text x="28" y="38" class="title">Most Used Languages</text>
-
-  <!-- Progress Bar Container -->
   <g clip-path="url(#bar-clip)">
     ${barSegments}
   </g>
-
-  <!-- Languages Grid -->
   ${gridItems}
 </svg>`;
-  return svg;
 }
 
-// Generate Streak SVG (Responsive 100% width preserving exact 520x200 aspect ratio)
 function generateStreakSVG(data) {
-  const svg = `<svg width="100%" height="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
   <style>
     .stat-val { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 800; font-size: 28px; fill: #f8f8f2; text-anchor: middle; }
     .stat-label { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 600; font-size: 13.5px; fill: #f8f8f2; text-anchor: middle; }
@@ -373,54 +365,64 @@ function generateStreakSVG(data) {
     </linearGradient>
   </defs>
 
-  <!-- Background Card -->
   <rect x="1.5" y="1.5" width="517" height="197" rx="16" fill="url(#streak-card-grad)" stroke="url(#streak-border)" stroke-width="2" class="glow" />
 
-  <!-- Column Dividers -->
   <line x1="173" y1="35" x2="173" y2="165" stroke="#44475a" stroke-width="1" />
   <line x1="346" y1="35" x2="346" y2="165" stroke="#44475a" stroke-width="1" />
 
-  <!-- Column 1: Total Contributions -->
   <g transform="translate(86, 0)">
-    <text x="0" y="85" class="stat-val">${data.totalContributions.toLocaleString()}</text>
+    <text x="0" y="85" class="stat-val">${Number(data.totalContributions).toLocaleString()}</text>
     <text x="0" y="118" class="stat-label">Total Contributions</text>
-    <text x="0" y="142" class="stat-sub">${data.firstContributionDate}</text>
+    <text x="0" y="142" class="stat-sub">${escapeXML(data.firstContributionDate)}</text>
   </g>
 
-  <!-- Column 2: Current Streak (Center with Fire Ring) -->
   <g transform="translate(260, 0)">
     <circle cx="0" cy="72" r="42" stroke="url(#fire-ring)" stroke-width="6" fill="none" />
-    <text x="0" y="32" font-size="20" text-anchor="middle">🔥</text>
-    <text x="0" y="82" class="streak-val">${data.currentStreak}</text>
+    <path d="M-6 40 C-10 46 -10 52 -6 56 C-2 60 2 60 6 56 C10 52 10 46 6 40 C3 36 -3 36 -6 40 Z" fill="#ffb86c" opacity="0.8" />
+    <text x="0" y="82" class="streak-val">${escapeXML(data.currentStreak)}</text>
     <text x="0" y="142" class="streak-label">Current Streak</text>
-    <text x="0" y="162" class="stat-sub">${data.currentStreakDates}</text>
+    <text x="0" y="162" class="stat-sub">${escapeXML(data.currentStreakDates)}</text>
   </g>
 
-  <!-- Column 3: Longest Streak -->
   <g transform="translate(433, 0)">
-    <text x="0" y="85" class="stat-val">${data.longestStreak}</text>
+    <text x="0" y="85" class="stat-val">${escapeXML(data.longestStreak)}</text>
     <text x="0" y="118" class="stat-label">Longest Streak</text>
-    <text x="0" y="142" class="stat-sub">${data.longestStreakDates}</text>
+    <text x="0" y="142" class="stat-sub">${escapeXML(data.longestStreakDates)}</text>
   </g>
 </svg>`;
-  return svg;
 }
 
-// Generate Trophies SVG (Fixed syntax error and made 100% responsive with smooth aspect scaling)
+function getVectorIcon(type, color) {
+  if (type === 'lang') {
+    return `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="${color}"/>`;
+  }
+  if (type === 'commit') {
+    return `<path d="M17 12c0-2.5-1.85-4.59-4.26-4.94l1.63-1.63c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-3.35 3.35c-.39.39-.39 1.02 0 1.41l3.35 3.35c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.63-1.63C15.15 9.41 17 11.5 17 14H5c0-3.31 2.69-6 6-6v-2c-4.42 0-8 3.58-8 8h16c0-.69-.1-1.35-.29-1.98z" fill="${color}"/>`;
+  }
+  if (type === 'arch') {
+    return `<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" fill="${color}"/>`;
+  }
+  return `<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="${color}"/>`;
+}
+
 function generateTrophiesSVG(data) {
   const trophyCards = data.trophies.map((t, idx) => {
     const x = 16 + idx * 202;
+    const iconSVG = getVectorIcon(t.iconType || 'streak', t.color);
     return `<g transform="translate(${x}, 16)">
       <rect x="0" y="0" width="186" height="128" rx="12" fill="#1e1f29" stroke="${t.color}" stroke-width="1.5" />
-      <circle cx="93" cy="38" r="22" fill="${t.color}" fill-opacity="0.15" />
-      <text x="93" y="44" font-size="22" text-anchor="middle">${t.icon}</text>
-      <text x="93" y="80" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14" fill="#f8f8f2" text-anchor="middle">${t.title}</text>
+      <circle cx="93" cy="38" r="20" fill="${t.color}" fill-opacity="0.15" />
+      <g transform="translate(81, 26)">
+        <svg width="24" height="24" viewBox="0 0 24 24">${iconSVG}</svg>
+      </g>
+      <text x="93" y="80" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14" fill="#f8f8f2" text-anchor="middle">${escapeXML(t.title)}</text>
       <rect x="53" y="88" width="80" height="18" rx="9" fill="${t.color}" fill-opacity="0.2" />
-      <text x="93" y="101" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11" fill="${t.color}" text-anchor="middle">${t.tier}</text>
+      <text x="93" y="101" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11" fill="${t.color}" text-anchor="middle">${escapeXML(t.tier)}</text>
     </g>`;
   }).join('\n  ');
 
-  const svg = `<svg width="100%" height="100%" viewBox="0 0 840 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 840 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <defs>
     <linearGradient id="trophy-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#282a36" />
@@ -437,30 +439,31 @@ function generateTrophiesSVG(data) {
   <rect x="1.5" y="1.5" width="837" height="157" rx="16" fill="url(#trophy-bg)" stroke="url(#trophy-border)" stroke-width="2" />
   ${trophyCards}
 </svg>`;
-  return svg;
 }
 
-// Generate Top Repositories SVG (New Self-Hosted replacement for external contributor cards)
 function generateTopReposSVG(data) {
   const repoCards = data.topRepos.map((repo, idx) => {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
     const x = col === 0 ? 16 : 426;
     const y = 56 + row * 84;
+    const rawDesc = repo.desc || '';
+    const truncatedDesc = rawDesc.length > 46 ? rawDesc.substring(0, 44) + '...' : rawDesc;
     return `<g transform="translate(${x}, ${y})">
       <rect x="0" y="0" width="398" height="74" rx="10" fill="#1e1f29" stroke="#44475a" stroke-width="1" />
-      <text x="16" y="26" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14.5" fill="#8be9fd">${repo.name}</text>
-      <text x="16" y="46" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="400" font-size="12" fill="#6272a4">${repo.desc.length > 46 ? repo.desc.substring(0, 44) + '...' : repo.desc}</text>
+      <text x="16" y="26" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="700" font-size="14.5" fill="#8be9fd">${escapeXML(repo.name)}</text>
+      <text x="16" y="46" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="400" font-size="12" fill="#6272a4">${escapeXML(truncatedDesc)}</text>
       <circle cx="20" cy="62" r="5" fill="${repo.color}" />
-      <text x="32" y="65" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11.5" fill="#f8f8f2">${repo.lang}</text>
+      <text x="32" y="65" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="11.5" fill="#f8f8f2">${escapeXML(repo.lang)}</text>
       <g transform="translate(320, 55)">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-        <text x="17" y="11" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="12" fill="#f8f8f2">${repo.stars}</text>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="#f1fa8c"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        <text x="17" y="11" font-family="'Segoe UI', Ubuntu, sans-serif" font-weight="600" font-size="12" fill="#f8f8f2">${escapeXML(repo.stars)}</text>
       </g>
     </g>`;
   }).join('\n  ');
 
-  const svg = `<svg width="100%" height="100%" viewBox="0 0 840 236" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 840 236" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <style>
     .title { font-family: 'Segoe UI', Ubuntu, sans-serif; font-weight: 700; font-size: 18px; fill: #f8f8f2; }
     .glow { filter: drop-shadow(0px 0px 8px rgba(139, 233, 253, 0.3)); }
@@ -478,16 +481,14 @@ function generateTopReposSVG(data) {
   </defs>
 
   <rect x="1.5" y="1.5" width="837" height="233" rx="16" fill="url(#repos-bg)" stroke="url(#repos-border)" stroke-width="2" class="glow" />
-  <text x="28" y="38" class="title">⚡ Top Contributed & Featured Repositories</text>
+  <text x="28" y="38" class="title">Top Contributed &amp; Featured Repositories</text>
   <path d="M28 48 H812" stroke="#44475a" stroke-width="1" stroke-linecap="round" />
   ${repoCards}
 </svg>`;
-  return svg;
 }
 
-// Main Runner
 async function main() {
-  console.log('Generating custom Dracula/Cyberpunk profile SVGs...');
+  console.log('Generating clean, professional executive profile SVGs with full XML escaping...');
   const data = await fetchGitHubData();
 
   fs.writeFileSync(path.join(outputDir, 'stats.svg'), generateStatsSVG(data), 'utf8');
@@ -505,7 +506,7 @@ async function main() {
   fs.writeFileSync(path.join(outputDir, 'top-repos.svg'), generateTopReposSVG(data), 'utf8');
   console.log('✔ Saved public/svgs/top-repos.svg');
 
-  console.log('🎉 All custom SVG cards generated successfully!');
+  console.log('All professional SVG cards generated successfully without errors.');
 }
 
 main();

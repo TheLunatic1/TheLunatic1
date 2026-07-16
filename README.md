@@ -1,46 +1,37 @@
-<h1 align="center">
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="48" height="48" />
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Hack&weight=700&size=30&duration=3500&pause=800&color=BD93F9&center=true&vCenter=true&width=750&lines=Hi+There!+I'm+Salman+Toha+⚡;Full+Stack+MERN+%26+Mobile+Architect;DevOps+%26+Cloud+Systems+Engineer;Self-Hosted+GitHub+Analytics+Engine;Welcome+to+my+Cyberpunk+Hub!">
-  </a>
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Party%20Popper.png" width="48" height="48" />
-</h1>
+<h1 align="center">Salman Toha</h1>
 
-<h3 align="center">Full Stack Developer | Mobile Dev | DevOps & AI Architect</h3>
+<h3 align="center">Full Stack Developer | Mobile Systems | DevOps & AI Engineering</h3>
 
 <p align="center">
   <a href="https://komarev.com/ghpvc/?username=thelunatic1">
-    <img src="https://komarev.com/ghpvc/?username=thelunatic1&label=Profile%20Views&color=bd93f9&style=for-the-badge" alt="thelunatic1 views" />
+    <img src="https://komarev.com/ghpvc/?username=thelunatic1&label=Profile%20Views&color=bd93f9&style=for-the-badge" alt="Profile Views" />
   </a>
   <a href="https://salmantoha.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-salmantoha.vercel.app-8be9fd?style=for-the-badge&logo=vercel&logoColor=black" alt="Portfolio" />
   </a>
-  <a href="./web/index.html">
-    <img src="https://img.shields.io/badge/Interactive_Companion_Hub-Launch_HTML_Portal-ff79c6?style=for-the-badge&logo=html5&logoColor=white" alt="HTML Hub" />
-  </a>
 </p>
 
 <div align="center">
-  <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/80728820-e06b-4f96-9c9e-9df46f0cc0a5?raw=true" width="100%" style="max-width: 900px;" alt="Cyberpunk Dev Banner">
+  <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/80728820-e06b-4f96-9c9e-9df46f0cc0a5?raw=true" width="100%" style="max-width: 900px;" alt="Engineering Architecture Banner">
 </div>
 
 <br>
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Dizzy.webp" alt="Dizzy" width="32" height="32" /> About Me & Architecture Vision
+## About Me
 
 I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧🇩. I specialize in building highly responsive, scalable, and resilient applications bridging cutting-edge **MERN Stack**, **React Native**, **DevOps CI/CD**, and **AI/ML solutions**.
 
--  **Core Mastery:** Specialized in **MERN Stack** (MongoDB, Express, React, Node.js), **React Native**, and **Modern Web Systems**.
--  **DevOps & Cloud:** Designing automated CI/CD workflows, Docker containerization, Linux systems (KVM/QEMU), Nginx reverse proxying, and server orchestration.
--  **Currently Expanding:** Deep diving into **CI/CD, DevOps**, **High-Availability Server Management**, and **Cloud Infrastructure**.
--  **Direct Contact:** `ishrak1846@gmail.com`   
+- **Core Mastery:** Specialized in **MERN Stack** (MongoDB, Express, React, Node.js), **React Native**, and **Modern Web Systems**.
+- **DevOps & Cloud:** Designing automated CI/CD workflows, Docker containerization, Linux systems (KVM/QEMU), Nginx reverse proxying, and server orchestration.
+- **Currently Expanding:** Deep diving into **CI/CD, DevOps**, **High-Availability Server Management**, and **Cloud Infrastructure**.
+- **Direct Contact:** `ishrak1846@gmail.com`
 - **Live Portfolio:** [salmantoha.vercel.app](https://salmantoha.vercel.app/)
 
 <br>
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Bubbles.png" alt="Bubbles" width="32" height="32" /> Connect With Me
+## Connect With Me
 
 <p align="center">
   <a href="https://discord.gg/577828703422119961"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
@@ -53,7 +44,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧�
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="32" height="32" /> Technical Arsenal & Stack
+## Technical Arsenal & Stack
 
 <table>
   <tr>
@@ -105,9 +96,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧�
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="32" height="32" /> Self-Hosted GitHub Stats & Analytics
-
-
+## GitHub Analytics & Contributions
 
 <div align="center">
   <img src="./public/svgs/stats.svg" width="100%" alt="GitHub Stats Card" />
@@ -129,17 +118,17 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧�
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Crown.webp" alt="Crown" width="32" height="32" /> GitHub Trophies & Achievements
+## Achievements & Trophies
 
 <div align="center">
-  <img src="./public/svgs/trophies.svg" width="100%" alt="Self-Hosted GitHub Trophies Card" />
+  <img src="./public/svgs/trophies.svg" width="100%" alt="GitHub Trophies Card" />
 </div>
 
 <br>
 
 ---
 
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Writing%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Writing Hand" width="32" height="32" /> Daily Dev Inspiration
+## Daily Inspiration
 
 <div align="center">
   <a href="https://github.com/piyushsuthar/quotes-github-readme">
@@ -151,7 +140,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧�
 
 ---
 
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Symbols/Top%20Arrow.webp" alt="Top Arrow" width="32" height="32" /> Top Contributed Repositories
+## Top Contributed & Featured Repositories
 
 <div align="center">
   <img src="./public/svgs/top-repos.svg" width="100%" alt="Top Contributed Repositories" />
@@ -163,7 +152,6 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh 🇧�
 
 <div align="center">
   <h3>Thanks for visiting my GitHub</h3>
-  <a href="./web/index.html">
-    <img src="https://readme-typing-svg.demolab.com?font=Hack&weight=600&size=18&duration=3000&pause=1000&color=8BE9FD&center=true&vCenter=true&width=650&lines=Click+to+launch+the+interactive+companion+web+terminal+⚡;Let's+collaborate+and+build+the+future+of+technology!" />
-  </a>
+  <p>Let's connect and collaborate on building modern web, mobile, and cloud architecture.</p>
+  <a href="https://salmantoha.vercel.app/">🌐 Visit Live Portfolio</a>
 </div>
