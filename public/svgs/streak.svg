@@ -30,14 +30,14 @@
   <line x1="346" y1="26" x2="346" y2="146" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
 
   <g transform="translate(86, 0)">
-    <text x="0" y="74" class="stat-val">1,137</text>
+    <text x="0" y="74" class="stat-val">1,145</text>
     <text x="0" y="104" class="stat-label">Total Contributions</text>
     <text x="0" y="126" class="stat-sub">Sep 2022 - Present</text>
   </g>
 
   <g transform="translate(260, 0)">
     <circle cx="0" cy="65" r="36" stroke="url(#fire-ring)" stroke-width="5" fill="none" />
-    <text x="0" y="74" class="streak-val">6</text>
+    <text x="0" y="74" class="streak-val">1</text>
     <text x="0" y="124" class="streak-label">Current Streak</text>
     <text x="0" y="142" class="stat-sub">Active Streak</text>
   </g>
