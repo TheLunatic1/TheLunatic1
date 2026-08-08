@@ -31,7 +31,7 @@
   <g transform="translate(24, 68)">
     <circle cx="7" cy="7" r="4" fill="#fbbf24" />
     <text x="22" y="11" class="label">Total Stars Earned</text>
-    <text x="200" y="11" class="value">40</text>
+    <text x="200" y="11" class="value">41</text>
   </g>
 
   <g transform="translate(24, 96)">
