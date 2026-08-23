@@ -19,7 +19,7 @@ function escapeXML(str) {
 
 const defaultData = {
   name: 'Salman Toha',
-  totalStars: 41,
+  totalStars: 47,
   totalCommits: 1381,
   totalPRs: 1,
   totalIssues: 0,
@@ -27,17 +27,17 @@ const defaultData = {
   totalContributions: 1456,
   currentStreak: 5,
   currentStreakDates: 'Active Streak',
-  longestStreak: 21,
+  longestStreak: 10,
   longestStreakDates: 'Record Streak',
   firstContributionDate: 'Sep 2022 - Present',
   grade: 'A+',
   languages: [
-    { name: 'JavaScript', percent: 46.7, color: '#fbbf24' },
-    { name: 'TypeScript', percent: 22.2, color: '#6366f1' },
-    { name: 'HTML', percent: 17.8, color: '#fb7185' },
-    { name: 'CSS', percent: 4.4, color: '#38bdf8' },
-    { name: 'Jupyter Notebook', percent: 2.2, color: '#f59e0b' },
-    { name: 'C++', percent: 2.2, color: '#34d399' }
+    { name: 'TypeScript', percent: 53.1, color: '#6366f1' },
+    { name: 'JavaScript', percent: 38.1, color: '#fbbf24' },
+    { name: 'HTML', percent: 2.6, color: '#fb7185' },
+    { name: 'CSS', percent: 2.4, color: '#38bdf8' },
+    { name: 'Rust', percent: 1.4, color: '#dea584' },
+    { name: 'SCSS', percent: 1.3, color: '#c6538c' }
   ],
   trophies: [
     { title: 'MultiLang Master', tier: 'Gold Tier', desc: 'Used 6+ Languages', color: '#fbbf24', iconType: 'lang' },
@@ -129,14 +129,15 @@ async function fetchPublicGitHubData(username) {
         };
       });
 
-    const langColors = {
-      'JavaScript': '#fbbf24',
+    const neoColors = {
       'TypeScript': '#6366f1',
+      'JavaScript': '#fbbf24',
       'HTML': '#fb7185',
       'CSS': '#38bdf8',
-      'Jupyter Notebook': '#f59e0b',
+      'Rust': '#dea584',
+      'SCSS': '#c6538c',
       'C++': '#34d399',
-      'Python': '#3572A5'
+      'Python': '#3b82f6'
     };
 
     const sortedLanguages = Object.entries(langCounts)
@@ -145,7 +146,7 @@ async function fetchPublicGitHubData(username) {
       .map(([name, count]) => ({
         name: name,
         percent: parseFloat(((count / (totalReposWithLang || 1)) * 100).toFixed(1)),
-        color: langColors[name] || '#38bdf8'
+        color: neoColors[name] || '#6366f1'
       }));
 
     return {
@@ -281,11 +282,12 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
       });
 
     const neoLangColors = {
-      'JavaScript': '#fbbf24',
       'TypeScript': '#6366f1',
+      'JavaScript': '#fbbf24',
       'HTML': '#fb7185',
       'CSS': '#38bdf8',
-      'Jupyter Notebook': '#f59e0b',
+      'Rust': '#dea584',
+      'SCSS': '#c6538c',
       'C++': '#34d399',
       'Python': '#3b82f6',
       'PHP': '#818cf8',
@@ -320,7 +322,7 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
         }
       } else {
         if (i >= days.length - 2 && !streakActive) {
-          // No commits today or yesterday yet
+          // No commits recently
         } else if (currentStreak === 0 && tempStreak > 0) {
           currentStreak = tempStreak;
         }
@@ -334,7 +336,6 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
       currentStreak = 1;
     }
 
-    // Also scan all days to find global longest streak
     let maxStreakScan = 0;
     let curScan = 0;
     days.forEach(d => {
@@ -363,7 +364,7 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
       totalIssues: totalIssues,
       contributedTo: contributedTo,
       totalContributions: totalContribs,
-      currentStreak: currentStreak || 1,
+      currentStreak: currentStreak || 5,
       currentStreakDates: 'Active Streak',
       longestStreak: longestStreak || defaultData.longestStreak,
       longestStreakDates: 'Record Streak',
@@ -389,14 +390,14 @@ function generateStatsSVG(data) {
 <svg width="100%" viewBox="0 0 540 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
     .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
-    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 9px; fill: #000000; text-anchor: middle; letter-spacing: 0.05em; }
     .font-label { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; font-weight: 600; font-size: 11.5px; fill: #94a3b8; }
     .font-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; fill: #f8fafc; }
     .font-grade { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 24px; fill: #ffffff; text-anchor: middle; }
-    .font-grade-sub { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 8px; fill: #6366f1; text-anchor: middle; }
+    .font-grade-sub { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 8px; fill: #6366f1; text-anchor: middle; }
   </style>
 
-  <!-- Main Hard Neo-Brutalist Shadow -->
+  <!-- Hard Neo-Brutalist Shadow -->
   <rect x="7" y="7" width="526" height="196" rx="12" fill="#000000" />
   <!-- Main Card Body -->
   <rect x="3" y="3" width="526" height="196" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
@@ -493,7 +494,7 @@ function generateLanguagesSVG(data) {
       <circle cx="14" cy="13" r="5" fill="${lang.color}" stroke="#000000" stroke-width="1" />
       <text x="26" y="17" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="11.5px" fill="#f8fafc">${escapeXML(lang.name)}</text>
       <rect x="168" y="4" width="48" height="18" rx="4" fill="${lang.color}" stroke="#000000" stroke-width="1" />
-      <text x="192" y="16.5" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10px" fill="#000000" text-anchor="middle">${escapeXML(lang.percent)}%</text>
+      <text x="192" y="16.5" font-family="'JetBrains Mono', monospace" font-weight="800" font-size="10px" fill="#000000" text-anchor="middle">${escapeXML(lang.percent)}%</text>
     </g>`;
   }).join('\n  ');
 
@@ -501,7 +502,7 @@ function generateLanguagesSVG(data) {
 <svg width="100%" viewBox="0 0 540 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
     .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
-    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 9px; fill: #ffffff; text-anchor: middle; letter-spacing: 0.05em; }
   </style>
 
   <!-- Hard Neo-Brutalist Shadow -->
@@ -514,7 +515,7 @@ function generateLanguagesSVG(data) {
   <g transform="translate(432, 18)">
     <rect x="2" y="2" width="70" height="20" rx="6" fill="#000000" />
     <rect x="0" y="0" width="70" height="20" rx="6" fill="#6366f1" stroke="#000000" stroke-width="1.5" />
-    <text x="35" y="14" class="font-badge" fill="#ffffff">CODEBASE</text>
+    <text x="35" y="14" class="font-badge">CODEBASE</text>
   </g>
 
   <!-- Language Progress Bar (Chunky Neo Bar) -->
@@ -541,11 +542,11 @@ function generateStreakSVG(data) {
 <svg width="100%" viewBox="0 0 540 186" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
     .val-main { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 26px; fill: #ffffff; text-anchor: middle; letter-spacing: -0.02em; }
-    .val-highlight { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 32px; fill: #000000; text-anchor: middle; letter-spacing: -0.02em; }
+    .val-hero { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 34px; fill: #000000; text-anchor: middle; letter-spacing: -0.02em; }
     .label-main { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 11px; fill: #94a3b8; text-anchor: middle; text-transform: uppercase; letter-spacing: 0.05em; }
-    .label-highlight { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 12px; fill: #000000; text-anchor: middle; text-transform: uppercase; letter-spacing: 0.05em; }
-    .sub-tag { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9.5px; fill: #6366f1; text-anchor: middle; }
-    .sub-highlight { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9.5px; fill: #000000; text-anchor: middle; }
+    .label-hero { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 12px; fill: #000000; text-anchor: middle; text-transform: uppercase; letter-spacing: 0.05em; }
+    .sub-side { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9.5px; fill: #6366f1; text-anchor: middle; }
+    .sub-hero { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 10px; fill: #fbbf24; text-anchor: middle; letter-spacing: 0.04em; }
   </style>
 
   <!-- Hard Shadow -->
@@ -557,11 +558,11 @@ function generateStreakSVG(data) {
   <g transform="translate(24, 20)">
     <rect x="3" y="3" width="144" height="136" rx="10" fill="#000000" />
     <rect x="0" y="0" width="144" height="136" rx="10" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
-    <circle cx="72" cy="32" r="14" fill="#6366f1" stroke="#000000" stroke-width="1.2" />
-    <path d="M66 32 L70 36 L78 28" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <rect x="56" y="16" width="32" height="32" rx="8" fill="#6366f1" stroke="#000000" stroke-width="1.5" />
+    <path d="M66 32 L70 36 L78 27" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
     <text x="72" y="76" class="val-main">${Number(data.totalContributions).toLocaleString()}</text>
     <text x="72" y="98" class="label-main">Total Contributions</text>
-    <text x="72" y="118" class="sub-tag">${escapeXML(data.firstContributionDate)}</text>
+    <text x="72" y="118" class="sub-side">${escapeXML(data.firstContributionDate)}</text>
   </g>
 
   <!-- Block 2: Current Streak (Center Hero Neo Block) -->
@@ -569,48 +570,49 @@ function generateStreakSVG(data) {
     <rect x="4" y="4" width="168" height="148" rx="10" fill="#000000" />
     <rect x="0" y="0" width="168" height="148" rx="10" fill="#fbbf24" stroke="#000000" stroke-width="2.5" />
     
+    <!-- Centered Flame Badge Icon -->
     <g transform="translate(68, 12)">
-      <circle cx="16" cy="16" r="16" fill="#000000" />
-      <path d="M16 8 C16 8 11 13 11 18 C11 21 13 23 16 23 C19 23 21 21 21 18 C21 13 16 8 16 8 Z" fill="#fbbf24" />
+      <rect x="0" y="0" width="32" height="32" rx="8" fill="#000000" />
+      <path d="M16 6 C16 6 22 13 22 18 C22 22 19 25 16 25 C13 25 10 22 10 18 C10 13 16 6 16 6 Z M16 14 C16 14 18 17 18 19 C18 20.5 17 21.5 16 21.5 C15 21.5 14 20.5 14 19 C14 17 16 14 16 14 Z" fill="#fbbf24" />
     </g>
     
-    <text x="84" y="82" class="val-highlight">${escapeXML(data.currentStreak)}</text>
-    <text x="84" y="106" class="label-highlight">Current Streak</text>
+    <text x="84" y="80" class="val-hero">${escapeXML(data.currentStreak)}</text>
+    <text x="84" y="104" class="label-hero">Current Streak</text>
     
-    <rect x="28" y="116" width="112" height="20" rx="5" fill="#000000" />
-    <text x="84" y="130" class="sub-highlight" fill="#fbbf24">🔥 ACTIVE STREAK</text>
+    <rect x="20" y="115" width="128" height="22" rx="6" fill="#000000" />
+    <text x="84" y="130" class="sub-hero">🔥 ACTIVE STREAK</text>
   </g>
 
   <!-- Block 3: Longest Streak -->
   <g transform="translate(372, 20)">
     <rect x="3" y="3" width="144" height="136" rx="10" fill="#000000" />
     <rect x="0" y="0" width="144" height="136" rx="10" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
-    <circle cx="72" cy="32" r="14" fill="#34d399" stroke="#000000" stroke-width="1.2" />
-    <path d="M67 27 H77 V31 C77 34 74 36 72 36 C70 36 67 34 67 31 Z M65 29 H67 M77 29 H79 M72 36 V39 M68 39 H76" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <rect x="56" y="16" width="32" height="32" rx="8" fill="#34d399" stroke="#000000" stroke-width="1.5" />
+    <path d="M66 26 H78 V31 C78 34.5 75 37 72 37 C69 37 66 34.5 66 31 Z M63 28 H66 M78 28 H81 M72 37 V40 M67 40 H77" stroke="#000000" stroke-width="1.8" stroke-linecap="round" fill="none" />
     <text x="72" y="76" class="val-main">${Number(data.longestStreak).toLocaleString()}</text>
     <text x="72" y="98" class="label-main">Longest Streak</text>
-    <text x="72" y="118" class="sub-tag" fill="#34d399">RECORD DAYS</text>
+    <text x="72" y="118" class="sub-side" fill="#34d399">RECORD DAYS</text>
   </g>
 </svg>`;
 }
 
-function getVectorIcon(type, color) {
+function getVectorIcon(type) {
   if (type === 'lang') {
-    return `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="${color}"/>`;
+    return `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#000000"/>`;
   }
   if (type === 'commit') {
-    return `<path d="M17 12c0-2.5-1.85-4.59-4.26-4.94l1.63-1.63c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-3.35 3.35c-.39.39-.39 1.02 0 1.41l3.35 3.35c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.63-1.63C15.15 9.41 17 11.5 17 14H5c0-3.31 2.69-6 6-6v-2c-4.42 0-8 3.58-8 8h16c0-.69-.1-1.35-.29-1.98z" fill="${color}"/>`;
+    return `<path d="M17 12c0-2.5-1.85-4.59-4.26-4.94l1.63-1.63c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-3.35 3.35c-.39.39-.39 1.02 0 1.41l3.35 3.35c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.63-1.63C15.15 9.41 17 11.5 17 14H5c0-3.31 2.69-6 6-6v-2c-4.42 0-8 3.58-8 8h16c0-.69-.1-1.35-.29-1.98z" fill="#000000"/>`;
   }
   if (type === 'arch') {
-    return `<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" fill="${color}"/>`;
+    return `<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z" fill="#000000"/>`;
   }
-  return `<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="${color}"/>`;
+  return `<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#000000"/>`;
 }
 
 function generateTrophiesSVG(data) {
   const trophyCards = (data.trophies || []).map((t, idx) => {
     const x = 16 + idx * 202;
-    const iconSVG = getVectorIcon(t.iconType || 'streak', t.color);
+    const iconSVG = getVectorIcon(t.iconType || 'streak');
     return `<g transform="translate(${x}, 14)">
       <rect x="3" y="3" width="186" height="114" rx="8" fill="#000000" />
       <rect x="0" y="0" width="186" height="114" rx="8" fill="#141d2e" stroke="${t.color}" stroke-width="2" />
@@ -645,7 +647,7 @@ function generateTopReposSVG(data) {
     const x = col === 0 ? 16 : 426;
     const y = 52 + row * 76;
     const rawDesc = repo.desc || '';
-    const truncatedDesc = rawDesc.length > 48 ? rawDesc.substring(0, 46) + '...' : rawDesc;
+    const truncatedDesc = rawDesc.length > 44 ? rawDesc.substring(0, 42) + '...' : rawDesc;
     return `<g transform="translate(${x}, ${y})">
       <rect x="3" y="3" width="398" height="66" rx="8" fill="#000000" />
       <rect x="0" y="0" width="398" height="66" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
@@ -654,13 +656,14 @@ function generateTopReposSVG(data) {
       <text x="14" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="11px" fill="#94a3b8">${escapeXML(truncatedDesc)}</text>
       
       <circle cx="18" cy="54" r="4.5" fill="${repo.color}" stroke="#000000" stroke-width="1" />
-      <text x="28" y="57" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="10.5px" fill="#e2e8f0">${escapeXML(repo.lang)}</text>
+      <text x="28" y="57.5" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="10.5px" fill="#e2e8f0">${escapeXML(repo.lang)}</text>
       
-      <g transform="translate(320, 42)">
-        <rect x="2" y="2" width="64" height="18" rx="4" fill="#000000" />
-        <rect x="0" y="0" width="64" height="18" rx="4" fill="#fbbf24" stroke="#000000" stroke-width="1" />
-        <svg x="6" y="3" width="12" height="12" viewBox="0 0 16 16" fill="#000000"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-        <text x="24" y="13" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10.5px" fill="#000000">${escapeXML(repo.stars)} STARS</text>
+      <!-- Right-aligned Neo Star Badge -->
+      <g transform="translate(294, 38)">
+        <rect x="2" y="2" width="90" height="22" rx="6" fill="#000000" />
+        <rect x="0" y="0" width="90" height="22" rx="6" fill="#fbbf24" stroke="#000000" stroke-width="1.5" />
+        <svg x="8" y="4" width="14" height="14" viewBox="0 0 16 16" fill="#000000"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        <text x="28" y="15" font-family="'JetBrains Mono', monospace" font-weight="800" font-size="10.5px" fill="#000000">${escapeXML(repo.stars)} STARS</text>
       </g>
     </g>`;
   }).join('\n  ');
@@ -669,7 +672,7 @@ function generateTopReposSVG(data) {
 <svg width="100%" viewBox="0 0 840 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <style>
     .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
-    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 9px; fill: #000000; text-anchor: middle; letter-spacing: 0.05em; }
   </style>
 
   <!-- Hard Shadow -->
