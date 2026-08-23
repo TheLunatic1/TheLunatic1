@@ -99,19 +99,19 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## GitHub Analytics & Contributions
 
 <div align="center">
-  <img src="./public/svgs/stats.svg" width="100%" alt="GitHub Stats Card" />
+  <img src="https://toha-1.tail2c2947.ts.net/svg/stats" width="100%" alt="GitHub Stats Card" />
 </div>
 
 <br>
 
 <div align="center">
-  <img src="./public/svgs/languages.svg" width="100%" alt="Most Used Languages Card" />
+  <img src="https://toha-1.tail2c2947.ts.net/svg/languages" width="100%" alt="Most Used Languages Card" />
 </div>
 
 <br>
 
 <div align="center">
-  <img src="./public/svgs/streak.svg" width="100%" alt="GitHub Streak Card" />
+  <img src="https://toha-1.tail2c2947.ts.net/svg/streak" width="100%" alt="GitHub Streak Card" />
 </div>
 
 <br>
@@ -121,7 +121,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## Achievements & Trophies
 
 <div align="center">
-  <img src="./public/svgs/trophies.svg" width="100%" alt="GitHub Trophies Card" />
+  <img src="https://toha-1.tail2c2947.ts.net/svg/trophies" width="100%" alt="GitHub Trophies Card" />
 </div>
 
 <br>
@@ -143,7 +143,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## Top Contributed & Featured Repositories
 
 <div align="center">
-  <img src="./public/svgs/top-repos.svg" width="100%" alt="Top Contributed Repositories" />
+  <img src="https://toha-1.tail2c2947.ts.net/svg/top-repos" width="100%" alt="Top Contributed Repositories" />
 </div>
 
 <br>

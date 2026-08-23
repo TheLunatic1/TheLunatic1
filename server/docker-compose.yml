@@ -1,0 +1,13 @@
+services:
+  github-stats-card:
+    build: .
+    container_name: github-stats-card
+    restart: unless-stopped
+    ports:
+      - "3333:3333"
+    environment:
+      - PORT=3333
+      - USERNAME=TheLunatic1
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    env_file:
+      - .env
