@@ -20,36 +20,36 @@ function escapeXML(str) {
 const defaultData = {
   name: 'Salman Toha',
   totalStars: 41,
-  totalCommits: 790,
+  totalCommits: 1381,
   totalPRs: 1,
   totalIssues: 0,
-  contributedTo: 4,
-  totalContributions: 1138,
-  currentStreak: 2,
+  contributedTo: 84,
+  totalContributions: 1456,
+  currentStreak: 5,
   currentStreakDates: 'Active Streak',
-  longestStreak: 10,
+  longestStreak: 21,
   longestStreakDates: 'Record Streak',
   firstContributionDate: 'Sep 2022 - Present',
   grade: 'A+',
   languages: [
-    { name: 'JavaScript', percent: 46.7, color: '#f1fa8c' },
-    { name: 'TypeScript', percent: 22.2, color: '#3178c6' },
-    { name: 'HTML', percent: 17.8, color: '#e34f26' },
-    { name: 'CSS', percent: 4.4, color: '#bd93f9' },
-    { name: 'Hack', percent: 2.2, color: '#38bdf8' },
-    { name: 'C++', percent: 2.2, color: '#f34b7d' }
+    { name: 'JavaScript', percent: 46.7, color: '#fbbf24' },
+    { name: 'TypeScript', percent: 22.2, color: '#6366f1' },
+    { name: 'HTML', percent: 17.8, color: '#fb7185' },
+    { name: 'CSS', percent: 4.4, color: '#38bdf8' },
+    { name: 'Jupyter Notebook', percent: 2.2, color: '#f59e0b' },
+    { name: 'C++', percent: 2.2, color: '#34d399' }
   ],
   trophies: [
     { title: 'MultiLang Master', tier: 'Gold Tier', desc: 'Used 6+ Languages', color: '#fbbf24', iconType: 'lang' },
-    { title: 'Commit Consistency', tier: 'Gold Tier', desc: '790+ Commits in 2026', color: '#34d399', iconType: 'commit' },
-    { title: 'Full Stack Architect', tier: 'Platinum Tier', desc: 'MERN & Mobile Systems', color: '#a855f7', iconType: 'arch' },
-    { title: 'Record Streak', tier: 'Silver Tier', desc: '10 Day Contribution Streak', color: '#38bdf8', iconType: 'streak' }
+    { title: 'Commit Machine', tier: 'Platinum Tier', desc: '1,380+ Commits', color: '#6366f1', iconType: 'commit' },
+    { title: 'Full Stack Architect', tier: 'Gold Tier', desc: 'MERN & Mobile Systems', color: '#34d399', iconType: 'arch' },
+    { title: 'Contribution Streak', tier: 'Silver Tier', desc: 'Consistent Developer', color: '#fb7185', iconType: 'streak' }
   ],
   topRepos: [
-    { name: 'TheLunatic1 / Glyph', desc: 'Glyph is a sleek, modern desktop application designed to streamline server management...', stars: 12, commits: 120, lang: 'JavaScript', color: '#f1fa8c' },
-    { name: 'TheLunatic1 / IV_Fluid_Calculator_V2', desc: 'A clean and modern IV Drop Rate Calculator built for clinical use. Designed for doctors & nurses...', stars: 6, commits: 85, lang: 'TypeScript', color: '#3178c6' },
-    { name: 'TheLunatic1 / jobpulse-ai-frontend', desc: 'A stunning full-stack AI-powered job portal with role-based dashboards & real-time features...', stars: 5, commits: 140, lang: 'TypeScript', color: '#3178c6' },
-    { name: 'TheLunatic1 / bookcourier-client', desc: 'A full-stack book delivery management system with real-time updates...', stars: 4, commits: 110, lang: 'JavaScript', color: '#f1fa8c' }
+    { name: 'TheLunatic1 / Glyph', desc: 'Glyph is a sleek, modern desktop application designed to streamline server management...', stars: 12, commits: 120, lang: 'JavaScript', color: '#fbbf24' },
+    { name: 'TheLunatic1 / IV_Fluid_Calculator_V2', desc: 'A clean and modern IV Drop Rate Calculator built for clinical use. Designed for doctors & nurses...', stars: 6, commits: 85, lang: 'TypeScript', color: '#6366f1' },
+    { name: 'TheLunatic1 / jobpulse-ai-frontend', desc: 'A stunning full-stack AI-powered job portal with role-based dashboards & real-time features...', stars: 5, commits: 140, lang: 'TypeScript', color: '#6366f1' },
+    { name: 'TheLunatic1 / bookcourier-client', desc: 'A full-stack book delivery management system with real-time updates...', stars: 4, commits: 110, lang: 'JavaScript', color: '#fbbf24' }
   ]
 };
 
@@ -118,7 +118,7 @@ async function fetchPublicGitHubData(username) {
         let desc = repo.description || 'Full Stack Architecture & Systems Repository';
         if (desc.length > 52) desc = desc.substring(0, 50) + '...';
         const lang = repo.language || 'TypeScript';
-        const color = lang === 'TypeScript' ? '#3178c6' : (lang === 'JavaScript' ? '#f1fa8c' : (lang === 'HTML' ? '#e34f26' : '#bd93f9'));
+        const color = lang === 'TypeScript' ? '#6366f1' : (lang === 'JavaScript' ? '#fbbf24' : (lang === 'HTML' ? '#fb7185' : '#38bdf8'));
         return {
           name: `${username} / ${repo.name}`,
           desc: desc,
@@ -130,12 +130,12 @@ async function fetchPublicGitHubData(username) {
       });
 
     const langColors = {
-      'JavaScript': '#f1fa8c',
-      'TypeScript': '#3178c6',
-      'HTML': '#e34f26',
-      'CSS': '#bd93f9',
-      'PHP': '#4F5D95',
-      'C++': '#f34b7d',
+      'JavaScript': '#fbbf24',
+      'TypeScript': '#6366f1',
+      'HTML': '#fb7185',
+      'CSS': '#38bdf8',
+      'Jupyter Notebook': '#f59e0b',
+      'C++': '#34d399',
       'Python': '#3572A5'
     };
 
@@ -162,7 +162,8 @@ async function fetchPublicGitHubData(username) {
 }
 
 async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GITHUB_TOKEN) {
-  if (!token) {
+  const cleanToken = (token || '').trim();
+  if (!cleanToken) {
     return await fetchPublicGitHubData(username);
   }
 
@@ -208,7 +209,7 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
       const req = https.request('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
-          'Authorization': `bearer ${token}`,
+          'Authorization': `bearer ${cleanToken}`,
           'User-Agent': `${username}-Dynamic-Stats-Service`,
           'Content-Type': 'application/json'
         }
@@ -229,29 +230,32 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
     });
 
     const user = response.data?.user;
-    if (!user) return await fetchPublicGitHubData(username);
+    if (!user) {
+      console.warn('User object not found in GraphQL response, falling back.');
+      return await fetchPublicGitHubData(username);
+    }
 
     let totalStars = 0;
     const langMap = {};
     let totalLangSize = 0;
     const allRepos = [];
 
-    user.repositories.nodes.forEach(repo => {
-      totalStars += repo.stargazers.totalCount;
+    user.repositories?.nodes?.forEach(repo => {
+      totalStars += repo.stargazers?.totalCount || 0;
       const topLang = repo.languages?.edges?.[0]?.node;
       if (repo.name && repo.name !== username && !repo.name.startsWith('.')) {
         allRepos.push({
           name: `${username} / ${repo.name}`,
           description: repo.description,
-          stargazers_count: repo.stargazers.totalCount,
+          stargazers_count: repo.stargazers?.totalCount || 0,
           language: topLang?.name || 'Code',
-          color: topLang?.color || '#38bdf8'
+          color: topLang?.color || '#6366f1'
         });
       }
 
       repo.languages?.edges?.forEach(edge => {
         const langName = edge.node.name;
-        const langColor = edge.node.color || '#38bdf8';
+        const langColor = edge.node.color || '#6366f1';
         langMap[langName] = langMap[langName] || { name: langName, size: 0, color: langColor };
         langMap[langName].size += edge.size;
         totalLangSize += edge.size;
@@ -261,7 +265,7 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
     allRepos.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
 
     const topRepos = allRepos
-      .filter(r => r.stargazers_count >= 1 || r.description)
+      .filter(r => (r.stargazers_count >= 1) || r.description)
       .slice(0, 4)
       .map(repo => {
         let desc = repo.description || 'Full Stack Architecture & Systems Repository';
@@ -276,13 +280,25 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
         };
       });
 
+    const neoLangColors = {
+      'JavaScript': '#fbbf24',
+      'TypeScript': '#6366f1',
+      'HTML': '#fb7185',
+      'CSS': '#38bdf8',
+      'Jupyter Notebook': '#f59e0b',
+      'C++': '#34d399',
+      'Python': '#3b82f6',
+      'PHP': '#818cf8',
+      'Hack': '#22d3ee'
+    };
+
     const sortedLangs = Object.values(langMap)
       .sort((a, b) => b.size - a.size)
       .slice(0, 6)
       .map(lang => ({
         name: lang.name,
         percent: parseFloat(((lang.size / (totalLangSize || 1)) * 100).toFixed(1)),
-        color: lang.color
+        color: neoLangColors[lang.name] || lang.color || '#6366f1'
       }));
 
     const weeks = user.contributionsCollection?.contributionCalendar?.weeks || [];
@@ -291,38 +307,63 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
     let currentStreak = 0;
     let longestStreak = 0;
     let tempStreak = 0;
-    let todayOrYesterdayActive = false;
+    let streakActive = false;
 
+    // Iterate backwards from latest day
     for (let i = days.length - 1; i >= 0; i--) {
       const count = days[i].contributionCount;
       if (count > 0) {
         tempStreak++;
         if (tempStreak > longestStreak) longestStreak = tempStreak;
-        if (i >= days.length - 2) todayOrYesterdayActive = true;
+        if (i >= days.length - 2) {
+          streakActive = true;
+        }
       } else {
-        if (i >= days.length - 2 && !todayOrYesterdayActive) {
-          // No contributions recently
+        if (i >= days.length - 2 && !streakActive) {
+          // No commits today or yesterday yet
         } else if (currentStreak === 0 && tempStreak > 0) {
           currentStreak = tempStreak;
         }
         tempStreak = 0;
       }
     }
-    if (currentStreak === 0 && tempStreak > 0 && todayOrYesterdayActive) {
+    if (currentStreak === 0 && tempStreak > 0 && streakActive) {
       currentStreak = tempStreak;
+    }
+    if (currentStreak === 0 && streakActive) {
+      currentStreak = 1;
+    }
+
+    // Also scan all days to find global longest streak
+    let maxStreakScan = 0;
+    let curScan = 0;
+    days.forEach(d => {
+      if (d.contributionCount > 0) {
+        curScan++;
+        if (curScan > maxStreakScan) maxStreakScan = curScan;
+      } else {
+        curScan = 0;
+      }
+    });
+    if (maxStreakScan > longestStreak) {
+      longestStreak = maxStreakScan;
     }
 
     const totalContribs = user.contributionsCollection?.contributionCalendar?.totalContributions || defaultData.totalContributions;
+    const totalCommits = user.contributionsCollection?.totalCommitContributions || defaultData.totalCommits;
+    const totalPRs = user.contributionsCollection?.totalPullRequestContributions || defaultData.totalPRs;
+    const totalIssues = user.contributionsCollection?.totalIssueContributions || defaultData.totalIssues;
+    const contributedTo = user.contributionsCollection?.totalRepositoriesWithContributedCommits || defaultData.contributedTo;
 
     return {
       name: user.name || defaultData.name,
       totalStars: totalStars || defaultData.totalStars,
-      totalCommits: user.contributionsCollection?.totalCommitContributions || defaultData.totalCommits,
-      totalPRs: user.contributionsCollection?.totalPullRequestContributions || defaultData.totalPRs,
-      totalIssues: user.contributionsCollection?.totalIssueContributions || defaultData.totalIssues,
-      contributedTo: user.contributionsCollection?.totalRepositoriesWithContributedCommits || defaultData.contributedTo,
+      totalCommits: totalCommits,
+      totalPRs: totalPRs,
+      totalIssues: totalIssues,
+      contributedTo: contributedTo,
       totalContributions: totalContribs,
-      currentStreak: currentStreak || defaultData.currentStreak,
+      currentStreak: currentStreak || 1,
       currentStreakDates: 'Active Streak',
       longestStreak: longestStreak || defaultData.longestStreak,
       longestStreakDates: 'Record Streak',
@@ -338,76 +379,105 @@ async function fetchGitHubData(username = 'TheLunatic1', token = process.env.GIT
   }
 }
 
+// ----------------------------------------------------------------------------------
+// NEO-BRUTALISM SVG GENERATORS (salmantoha.vercel.app Aesthetic)
+// High-contrast, 2.5px solid borders, hard 4px offset box-shadows, Space Grotesk / JetBrains Mono
+// ----------------------------------------------------------------------------------
+
 function generateStatsSVG(data) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 520 195" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 540 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: 0.3px; }
-    .label { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 500; font-size: 12.5px; fill: #94a3b8; }
-    .value { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 13px; fill: #f8fafc; }
-    .grade-circle { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 800; font-size: 22px; fill: #38bdf8; text-anchor: middle; }
-    .glow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.5)); }
+    .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
+    .font-label { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; font-weight: 600; font-size: 11.5px; fill: #94a3b8; }
+    .font-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; fill: #f8fafc; }
+    .font-grade { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 24px; fill: #ffffff; text-anchor: middle; }
+    .font-grade-sub { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 8px; fill: #6366f1; text-anchor: middle; }
   </style>
-  <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1117" />
-      <stop offset="100%" stop-color="#161923" />
-    </linearGradient>
-    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#34d399" stop-opacity="0.6" />
-    </linearGradient>
-    <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#818cf8" />
-    </linearGradient>
-  </defs>
 
-  <rect x="1" y="1" width="518" height="193" rx="14" fill="url(#bg-grad)" stroke="url(#border-grad)" stroke-width="1.5" class="glow" />
+  <!-- Main Hard Neo-Brutalist Shadow -->
+  <rect x="7" y="7" width="526" height="196" rx="12" fill="#000000" />
+  <!-- Main Card Body -->
+  <rect x="3" y="3" width="526" height="196" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
 
-  <text x="24" y="34" class="title">${escapeXML(data.name)}'s GitHub Analytics</text>
-  <path d="M24 45 H496" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" stroke-linecap="round" />
-
-  <g transform="translate(24, 68)">
-    <circle cx="7" cy="7" r="4" fill="#fbbf24" />
-    <text x="22" y="11" class="label">Total Stars Earned</text>
-    <text x="200" y="11" class="value">${escapeXML(data.totalStars)}</text>
+  <!-- Header Section -->
+  <text x="24" y="34" class="font-title">${escapeXML(data.name)}'s GitHub Analytics</text>
+  
+  <!-- Neo Tag Badge -->
+  <g transform="translate(420, 18)">
+    <rect x="2" y="2" width="80" height="20" rx="6" fill="#000000" />
+    <rect x="0" y="0" width="80" height="20" rx="6" fill="#34d399" stroke="#000000" stroke-width="1.5" />
+    <text x="40" y="14" class="font-badge">LIVE METRICS</text>
   </g>
 
-  <g transform="translate(24, 96)">
-    <circle cx="7" cy="7" r="4" fill="#34d399" />
-    <text x="22" y="11" class="label">Total Commits (2026)</text>
-    <text x="200" y="11" class="value">${escapeXML(data.totalCommits)}</text>
+  <!-- Divider Line -->
+  <line x1="24" y1="48" x2="508" y2="48" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.2" />
+
+  <!-- Stat Grid Items (Neo-Brutalist Mini Cards) -->
+  <!-- 1. Total Stars -->
+  <g transform="translate(24, 62)">
+    <rect x="2" y="2" width="180" height="52" rx="8" fill="#000000" />
+    <rect x="0" y="0" width="180" height="52" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <rect x="10" y="12" width="28" height="28" rx="6" fill="#fbbf24" stroke="#000000" stroke-width="1.2" />
+    <path d="M24 20 L25.5 24.5 H30 L26.5 27 L28 31.5 L24 28.5 L20 31.5 L21.5 27 L18 24.5 H22.5 Z" fill="#000000" />
+    <text x="46" y="24" class="font-label">Total Stars</text>
+    <text x="46" y="42" class="font-val">${Number(data.totalStars).toLocaleString()}</text>
   </g>
 
-  <g transform="translate(24, 124)">
-    <circle cx="7" cy="7" r="4" fill="#818cf8" />
-    <text x="22" y="11" class="label">Pull Requests</text>
-    <text x="200" y="11" class="value">${escapeXML(data.totalPRs)}</text>
+  <!-- 2. Total Commits -->
+  <g transform="translate(216, 62)">
+    <rect x="2" y="2" width="180" height="52" rx="8" fill="#000000" />
+    <rect x="0" y="0" width="180" height="52" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <rect x="10" y="12" width="28" height="28" rx="6" fill="#6366f1" stroke="#000000" stroke-width="1.2" />
+    <path d="M24 19 C21.8 19 20 20.8 20 23 C20 24.8 21.2 26.3 22.8 26.8 V30 H25.2 V26.8 C26.8 26.3 28 24.8 28 23 C28 20.8 26.2 19 24 19 Z" fill="#ffffff" />
+    <text x="46" y="24" class="font-label">Total Commits</text>
+    <text x="46" y="42" class="font-val">${Number(data.totalCommits).toLocaleString()}</text>
   </g>
 
-  <g transform="translate(24, 152)">
-    <circle cx="7" cy="7" r="4" fill="#f43f5e" />
-    <text x="22" y="11" class="label">Contributed Repositories</text>
-    <text x="200" y="11" class="value">${escapeXML(data.contributedTo)}</text>
+  <!-- 3. Pull Requests -->
+  <g transform="translate(24, 126)">
+    <rect x="2" y="2" width="180" height="52" rx="8" fill="#000000" />
+    <rect x="0" y="0" width="180" height="52" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <rect x="10" y="12" width="28" height="28" rx="6" fill="#34d399" stroke="#000000" stroke-width="1.2" />
+    <circle cx="21" cy="21" r="2.5" fill="#000000" />
+    <circle cx="27" cy="30" r="2.5" fill="#000000" />
+    <path d="M21 24 V31 M27 21 V27" stroke="#000000" stroke-width="1.8" stroke-linecap="round" />
+    <text x="46" y="24" class="font-label">Pull Requests</text>
+    <text x="46" y="42" class="font-val">${Number(data.totalPRs).toLocaleString()}</text>
   </g>
 
-  <g transform="translate(420, 110)">
-    <circle cx="0" cy="0" r="36" stroke="rgba(255, 255, 255, 0.06)" stroke-width="6" fill="none" />
-    <circle cx="0" cy="0" r="36" stroke="url(#ring-grad)" stroke-width="6" stroke-dasharray="226" stroke-dashoffset="16" stroke-linecap="round" fill="none" transform="rotate(-90)" />
-    <text x="0" y="7" class="grade-circle">${escapeXML(data.grade)}</text>
+  <!-- 4. Contributed Repos -->
+  <g transform="translate(216, 126)">
+    <rect x="2" y="2" width="180" height="52" rx="8" fill="#000000" />
+    <rect x="0" y="0" width="180" height="52" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <rect x="10" y="12" width="28" height="28" rx="6" fill="#fb7185" stroke="#000000" stroke-width="1.2" />
+    <path d="M19 22 H29 V30 H19 Z M21 20 V22 M27 20 V22" stroke="#000000" stroke-width="1.8" fill="none" stroke-linejoin="round" />
+    <text x="46" y="24" class="font-label">Contributed Repos</text>
+    <text x="46" y="42" class="font-val">${Number(data.contributedTo).toLocaleString()}</text>
+  </g>
+
+  <!-- Grade Badge (Neo-Brutalist Stamp) -->
+  <g transform="translate(416, 62)">
+    <rect x="4" y="4" width="92" height="116" rx="10" fill="#000000" />
+    <rect x="0" y="0" width="92" height="116" rx="10" fill="#141d2e" stroke="#6366f1" stroke-width="2.5" />
+    
+    <rect x="12" y="16" width="68" height="68" rx="8" fill="#6366f1" stroke="#000000" stroke-width="1.5" />
+    <text x="46" y="60" class="font-grade">${escapeXML(data.grade)}</text>
+    
+    <rect x="14" y="92" width="64" height="16" rx="4" fill="#0b0f19" stroke="#6366f1" stroke-width="1" />
+    <text x="46" y="103" class="font-grade-sub">TOP TIER</text>
   </g>
 </svg>`;
 }
 
 function generateLanguagesSVG(data) {
   let barX = 24;
-  const totalWidth = 392;
+  const totalWidth = 472;
   
   const barSegments = (data.languages || []).map(lang => {
-    const width = Math.max((lang.percent / 100) * totalWidth, 4);
-    const segment = `<rect x="${barX}" y="52" width="${width}" height="8" fill="${lang.color}" />`;
+    const width = Math.max((lang.percent / 100) * totalWidth, 6);
+    const segment = `<rect x="${barX}" y="56" width="${width}" height="14" fill="${lang.color}" stroke="#000000" stroke-width="1.5" />`;
     barX += width;
     return segment;
   }).join('\n    ');
@@ -415,97 +485,111 @@ function generateLanguagesSVG(data) {
   const gridItems = (data.languages || []).map((lang, idx) => {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
-    const x = col === 0 ? 24 : 230;
-    const y = 88 + row * 24;
+    const x = col === 0 ? 24 : 270;
+    const y = 88 + row * 34;
     return `<g transform="translate(${x}, ${y})">
-      <circle cx="5" cy="5" r="4.5" fill="${lang.color}" />
-      <text x="17" y="9" class="lang-name">${escapeXML(lang.name)}</text>
-      <text x="${lang.name.length * 7.2 + 24}" y="9" class="lang-percent">${escapeXML(lang.percent)}%</text>
+      <rect x="2" y="2" width="226" height="26" rx="6" fill="#000000" />
+      <rect x="0" y="0" width="226" height="26" rx="6" fill="#141d2e" stroke="#ffffff" stroke-width="1.2" />
+      <circle cx="14" cy="13" r="5" fill="${lang.color}" stroke="#000000" stroke-width="1" />
+      <text x="26" y="17" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="11.5px" fill="#f8fafc">${escapeXML(lang.name)}</text>
+      <rect x="168" y="4" width="48" height="18" rx="4" fill="${lang.color}" stroke="#000000" stroke-width="1" />
+      <text x="192" y="16.5" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10px" fill="#000000" text-anchor="middle">${escapeXML(lang.percent)}%</text>
     </g>`;
-  }).join('\n    ');
+  }).join('\n  ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 440 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 540 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: 0.3px; }
-    .lang-name { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 600; font-size: 12px; fill: #e2e8f0; }
-    .lang-percent { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 500; font-size: 11.5px; fill: #64748b; }
-    .glow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.5)); }
+    .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
   </style>
+
+  <!-- Hard Neo-Brutalist Shadow -->
+  <rect x="7" y="7" width="526" height="192" rx="12" fill="#000000" />
+  <!-- Main Card Body -->
+  <rect x="3" y="3" width="526" height="192" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
+
+  <!-- Header -->
+  <text x="24" y="34" class="font-title">Most Used Languages</text>
+  <g transform="translate(432, 18)">
+    <rect x="2" y="2" width="70" height="20" rx="6" fill="#000000" />
+    <rect x="0" y="0" width="70" height="20" rx="6" fill="#6366f1" stroke="#000000" stroke-width="1.5" />
+    <text x="35" y="14" class="font-badge" fill="#ffffff">CODEBASE</text>
+  </g>
+
+  <!-- Language Progress Bar (Chunky Neo Bar) -->
+  <g>
+    <rect x="26" y="58" width="472" height="14" rx="6" fill="#000000" />
+    <g clip-path="url(#bar-clip-neo)">
+      ${barSegments}
+    </g>
+    <rect x="24" y="56" width="472" height="14" rx="6" fill="none" stroke="#ffffff" stroke-width="1.5" />
+  </g>
   <defs>
-    <linearGradient id="bg-grad-lang" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1117" />
-      <stop offset="100%" stop-color="#161923" />
-    </linearGradient>
-    <linearGradient id="border-lang" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.6" />
-    </linearGradient>
-    <clipPath id="bar-clip">
-      <rect x="24" y="52" width="392" height="8" rx="4" />
+    <clipPath id="bar-clip-neo">
+      <rect x="24" y="56" width="472" height="14" rx="6" />
     </clipPath>
   </defs>
 
-  <rect x="1" y="1" width="438" height="166" rx="14" fill="url(#bg-grad-lang)" stroke="url(#border-lang)" stroke-width="1.5" class="glow" />
-  <text x="24" y="34" class="title">Most Used Languages</text>
-  <path d="M24 43 H416" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" stroke-linecap="round" />
-  <g clip-path="url(#bar-clip)">
-    ${barSegments}
-  </g>
+  <!-- Language Tags Grid -->
   ${gridItems}
 </svg>`;
 }
 
 function generateStreakSVG(data) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 520 172" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 520px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 540 186" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px; display: block; margin: 0 auto;">
   <style>
-    .stat-val { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 800; font-size: 24px; fill: #f8fafc; text-anchor: middle; }
-    .stat-label { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 600; font-size: 12px; fill: #94a3b8; text-anchor: middle; }
-    .stat-sub { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 500; font-size: 11px; fill: #64748b; text-anchor: middle; }
-    .streak-val { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 800; font-size: 26px; fill: #fbbf24; text-anchor: middle; }
-    .streak-label { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 12.5px; fill: #fbbf24; text-anchor: middle; }
-    .glow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.5)); }
+    .val-main { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 26px; fill: #ffffff; text-anchor: middle; letter-spacing: -0.02em; }
+    .val-highlight { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 32px; fill: #000000; text-anchor: middle; letter-spacing: -0.02em; }
+    .label-main { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 11px; fill: #94a3b8; text-anchor: middle; text-transform: uppercase; letter-spacing: 0.05em; }
+    .label-highlight { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 12px; fill: #000000; text-anchor: middle; text-transform: uppercase; letter-spacing: 0.05em; }
+    .sub-tag { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9.5px; fill: #6366f1; text-anchor: middle; }
+    .sub-highlight { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9.5px; fill: #000000; text-anchor: middle; }
   </style>
-  <defs>
-    <linearGradient id="bg-grad-streak" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1117" />
-      <stop offset="100%" stop-color="#161923" />
-    </linearGradient>
-    <linearGradient id="border-streak" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6" />
-      <stop offset="50%" stop-color="#f43f5e" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6" />
-    </linearGradient>
-    <linearGradient id="fire-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fbbf24" />
-      <stop offset="100%" stop-color="#f97316" />
-    </linearGradient>
-  </defs>
 
-  <rect x="1" y="1" width="518" height="170" rx="14" fill="url(#bg-grad-streak)" stroke="url(#border-streak)" stroke-width="1.5" class="glow" />
+  <!-- Hard Shadow -->
+  <rect x="7" y="7" width="526" height="172" rx="12" fill="#000000" />
+  <!-- Main Card Body -->
+  <rect x="3" y="3" width="526" height="172" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
 
-  <line x1="173" y1="26" x2="173" y2="146" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
-  <line x1="346" y1="26" x2="346" y2="146" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
-
-  <g transform="translate(86, 0)">
-    <text x="0" y="74" class="stat-val">${Number(data.totalContributions).toLocaleString()}</text>
-    <text x="0" y="104" class="stat-label">Total Contributions</text>
-    <text x="0" y="126" class="stat-sub">${escapeXML(data.firstContributionDate)}</text>
+  <!-- Block 1: Total Contributions -->
+  <g transform="translate(24, 20)">
+    <rect x="3" y="3" width="144" height="136" rx="10" fill="#000000" />
+    <rect x="0" y="0" width="144" height="136" rx="10" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <circle cx="72" cy="32" r="14" fill="#6366f1" stroke="#000000" stroke-width="1.2" />
+    <path d="M66 32 L70 36 L78 28" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <text x="72" y="76" class="val-main">${Number(data.totalContributions).toLocaleString()}</text>
+    <text x="72" y="98" class="label-main">Total Contributions</text>
+    <text x="72" y="118" class="sub-tag">${escapeXML(data.firstContributionDate)}</text>
   </g>
 
-  <g transform="translate(260, 0)">
-    <circle cx="0" cy="65" r="36" stroke="url(#fire-ring)" stroke-width="5" fill="none" />
-    <text x="0" y="74" class="streak-val">${escapeXML(data.currentStreak)}</text>
-    <text x="0" y="124" class="streak-label">Current Streak</text>
-    <text x="0" y="142" class="stat-sub">${escapeXML(data.currentStreakDates)}</text>
+  <!-- Block 2: Current Streak (Center Hero Neo Block) -->
+  <g transform="translate(186, 14)">
+    <rect x="4" y="4" width="168" height="148" rx="10" fill="#000000" />
+    <rect x="0" y="0" width="168" height="148" rx="10" fill="#fbbf24" stroke="#000000" stroke-width="2.5" />
+    
+    <g transform="translate(68, 12)">
+      <circle cx="16" cy="16" r="16" fill="#000000" />
+      <path d="M16 8 C16 8 11 13 11 18 C11 21 13 23 16 23 C19 23 21 21 21 18 C21 13 16 8 16 8 Z" fill="#fbbf24" />
+    </g>
+    
+    <text x="84" y="82" class="val-highlight">${escapeXML(data.currentStreak)}</text>
+    <text x="84" y="106" class="label-highlight">Current Streak</text>
+    
+    <rect x="28" y="116" width="112" height="20" rx="5" fill="#000000" />
+    <text x="84" y="130" class="sub-highlight" fill="#fbbf24">🔥 ACTIVE STREAK</text>
   </g>
 
-  <g transform="translate(433, 0)">
-    <text x="0" y="74" class="stat-val">${escapeXML(data.longestStreak)}</text>
-    <text x="0" y="104" class="stat-label">Longest Streak</text>
-    <text x="0" y="126" class="stat-sub">${escapeXML(data.longestStreakDates)}</text>
+  <!-- Block 3: Longest Streak -->
+  <g transform="translate(372, 20)">
+    <rect x="3" y="3" width="144" height="136" rx="10" fill="#000000" />
+    <rect x="0" y="0" width="144" height="136" rx="10" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+    <circle cx="72" cy="32" r="14" fill="#34d399" stroke="#000000" stroke-width="1.2" />
+    <path d="M67 27 H77 V31 C77 34 74 36 72 36 C70 36 67 34 67 31 Z M65 29 H67 M77 29 H79 M72 36 V39 M68 39 H76" stroke="#000000" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <text x="72" y="76" class="val-main">${Number(data.longestStreak).toLocaleString()}</text>
+    <text x="72" y="98" class="label-main">Longest Streak</text>
+    <text x="72" y="118" class="sub-tag" fill="#34d399">RECORD DAYS</text>
   </g>
 </svg>`;
 }
@@ -528,33 +612,28 @@ function generateTrophiesSVG(data) {
     const x = 16 + idx * 202;
     const iconSVG = getVectorIcon(t.iconType || 'streak', t.color);
     return `<g transform="translate(${x}, 14)">
-      <rect x="0" y="0" width="186" height="114" rx="10" fill="#131620" stroke="${t.color}" stroke-width="1.2" stroke-opacity="0.6" />
-      <circle cx="93" cy="34" r="16" fill="${t.color}" fill-opacity="0.12" />
-      <g transform="translate(83, 24)">
-        <svg width="20" height="20" viewBox="0 0 24 24">${iconSVG}</svg>
+      <rect x="3" y="3" width="186" height="114" rx="8" fill="#000000" />
+      <rect x="0" y="0" width="186" height="114" rx="8" fill="#141d2e" stroke="${t.color}" stroke-width="2" />
+      
+      <rect x="73" y="14" width="40" height="40" rx="8" fill="${t.color}" stroke="#000000" stroke-width="1.5" />
+      <g transform="translate(81, 22)">
+        <svg width="24" height="24" viewBox="0 0 24 24">${iconSVG}</svg>
       </g>
-      <text x="93" y="70" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="12px" fill="#f8fafc" text-anchor="middle">${escapeXML(t.title)}</text>
-      <rect x="55" y="80" width="76" height="18" rx="9" fill="${t.color}" fill-opacity="0.15" />
-      <text x="93" y="93" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10px" fill="${t.color}" text-anchor="middle">${escapeXML(t.tier)}</text>
+      
+      <text x="93" y="74" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5px" fill="#f8fafc" text-anchor="middle">${escapeXML(t.title)}</text>
+      
+      <rect x="43" y="84" width="100" height="20" rx="5" fill="#0b0f19" stroke="${t.color}" stroke-width="1.2" />
+      <text x="93" y="97.5" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="9.5px" fill="${t.color}" text-anchor="middle">${escapeXML(t.tier)}</text>
     </g>`;
   }).join('\n  ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 840 142" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
-  <defs>
-    <linearGradient id="bg-grad-trophy" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1117" />
-      <stop offset="100%" stop-color="#161923" />
-    </linearGradient>
-    <linearGradient id="border-trophy" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6" />
-      <stop offset="33%" stop-color="#34d399" stop-opacity="0.6" />
-      <stop offset="66%" stop-color="#a855f7" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.6" />
-    </linearGradient>
-  </defs>
+<svg width="100%" viewBox="0 0 840 146" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+  <!-- Hard Shadow -->
+  <rect x="7" y="7" width="826" height="132" rx="12" fill="#000000" />
+  <!-- Main Card Body -->
+  <rect x="3" y="3" width="826" height="132" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
 
-  <rect x="1" y="1" width="838" height="140" rx="14" fill="url(#bg-grad-trophy)" stroke="url(#border-trophy)" stroke-width="1.5" />
   ${trophyCards}
 </svg>`;
 }
@@ -564,43 +643,50 @@ function generateTopReposSVG(data) {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
     const x = col === 0 ? 16 : 426;
-    const y = 50 + row * 76;
+    const y = 52 + row * 76;
     const rawDesc = repo.desc || '';
     const truncatedDesc = rawDesc.length > 48 ? rawDesc.substring(0, 46) + '...' : rawDesc;
     return `<g transform="translate(${x}, ${y})">
-      <rect x="0" y="0" width="398" height="66" rx="10" fill="#131620" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
-      <text x="14" y="24" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="700" font-size="13px" fill="#38bdf8">${escapeXML(repo.name)}</text>
-      <text x="14" y="42" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="400" font-size="11px" fill="#94a3b8">${escapeXML(truncatedDesc)}</text>
-      <circle cx="18" cy="54" r="4.5" fill="${repo.color}" />
-      <text x="28" y="57" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="10.5px" fill="#e2e8f0">${escapeXML(repo.lang)}</text>
-      <g transform="translate(330, 46)">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="#fbbf24"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
-        <text x="16" y="10" font-family="'Segoe UI', Inter, -apple-system, sans-serif" font-weight="600" font-size="11px" fill="#f8fafc">${escapeXML(repo.stars)}</text>
+      <rect x="3" y="3" width="398" height="66" rx="8" fill="#000000" />
+      <rect x="0" y="0" width="398" height="66" rx="8" fill="#141d2e" stroke="#ffffff" stroke-width="1.5" />
+      
+      <text x="14" y="24" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13px" fill="#38bdf8">${escapeXML(repo.name)}</text>
+      <text x="14" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="11px" fill="#94a3b8">${escapeXML(truncatedDesc)}</text>
+      
+      <circle cx="18" cy="54" r="4.5" fill="${repo.color}" stroke="#000000" stroke-width="1" />
+      <text x="28" y="57" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="10.5px" fill="#e2e8f0">${escapeXML(repo.lang)}</text>
+      
+      <g transform="translate(320, 42)">
+        <rect x="2" y="2" width="64" height="18" rx="4" fill="#000000" />
+        <rect x="0" y="0" width="64" height="18" rx="4" fill="#fbbf24" stroke="#000000" stroke-width="1" />
+        <svg x="6" y="3" width="12" height="12" viewBox="0 0 16 16" fill="#000000"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088-.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        <text x="24" y="13" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10.5px" fill="#000000">${escapeXML(repo.stars)} STARS</text>
       </g>
     </g>`;
   }).join('\n  ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" viewBox="0 0 840 216" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
+<svg width="100%" viewBox="0 0 840 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 840px; display: block; margin: 0 auto;">
   <style>
-    .title { font-family: 'Segoe UI', Inter, -apple-system, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: 0.3px; }
-    .glow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.5)); }
+    .font-title { font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #f8fafc; letter-spacing: -0.02em; }
+    .font-badge { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 9px; fill: #0b0f19; text-anchor: middle; letter-spacing: 0.05em; }
   </style>
-  <defs>
-    <linearGradient id="bg-grad-repos" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1117" />
-      <stop offset="100%" stop-color="#161923" />
-    </linearGradient>
-    <linearGradient id="border-repos" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#34d399" stop-opacity="0.6" />
-    </linearGradient>
-  </defs>
 
-  <rect x="1" y="1" width="838" height="214" rx="14" fill="url(#bg-grad-repos)" stroke="url(#border-repos)" stroke-width="1.5" class="glow" />
-  <text x="24" y="34" class="title">Top Contributed &amp; Featured Repositories</text>
-  <path d="M24 44 H816" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" stroke-linecap="round" />
+  <!-- Hard Shadow -->
+  <rect x="7" y="7" width="826" height="206" rx="12" fill="#000000" />
+  <!-- Main Card Body -->
+  <rect x="3" y="3" width="826" height="206" rx="12" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5" />
+
+  <text x="24" y="34" class="font-title">Top Contributed &amp; Featured Repositories</text>
+  
+  <g transform="translate(712, 18)">
+    <rect x="2" y="2" width="100" height="20" rx="6" fill="#000000" />
+    <rect x="0" y="0" width="100" height="20" rx="6" fill="#38bdf8" stroke="#000000" stroke-width="1.5" />
+    <text x="50" y="14" class="font-badge">SHOWCASE</text>
+  </g>
+
+  <line x1="24" y1="46" x2="816" y2="46" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.2" />
+
   ${repoCards}
 </svg>`;
 }
