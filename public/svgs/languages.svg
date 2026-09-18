@@ -25,32 +25,32 @@
   <text x="24" y="34" class="title">Most Used Languages</text>
   <path d="M24 43 H416" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" stroke-linecap="round" />
   <g clip-path="url(#bar-clip)">
-    <rect x="24" y="52" width="175.224" height="8" fill="#f1fa8c" />
-    <rect x="199.224" y="52" width="83.496" height="8" fill="#3178c6" />
-    <rect x="282.71999999999997" y="52" width="66.64" height="8" fill="#e34f26" />
-    <rect x="349.35999999999996" y="52" width="16.855999999999998" height="8" fill="#bd93f9" />
-    <rect x="366.21599999999995" y="52" width="8.232000000000001" height="8" fill="#38bdf8" />
-    <rect x="374.448" y="52" width="8.232000000000001" height="8" fill="#f34b7d" />
+    <rect x="24" y="52" width="171.69599999999997" height="8" fill="#f1fa8c" />
+    <rect x="195.69599999999997" y="52" width="89.76799999999999" height="8" fill="#3178c6" />
+    <rect x="285.46399999999994" y="52" width="65.464" height="8" fill="#e34f26" />
+    <rect x="350.92799999999994" y="52" width="16.464000000000002" height="8" fill="#bd93f9" />
+    <rect x="367.39199999999994" y="52" width="8.232000000000001" height="8" fill="#38bdf8" />
+    <rect x="375.62399999999997" y="52" width="8.232000000000001" height="8" fill="#f34b7d" />
   </g>
   <g transform="translate(24, 88)">
       <circle cx="5" cy="5" r="4.5" fill="#f1fa8c" />
       <text x="17" y="9" class="lang-name">JavaScript</text>
-      <text x="96" y="9" class="lang-percent">44.7%</text>
+      <text x="96" y="9" class="lang-percent">43.8%</text>
     </g>
     <g transform="translate(230, 88)">
       <circle cx="5" cy="5" r="4.5" fill="#3178c6" />
       <text x="17" y="9" class="lang-name">TypeScript</text>
-      <text x="96" y="9" class="lang-percent">21.3%</text>
+      <text x="96" y="9" class="lang-percent">22.9%</text>
     </g>
     <g transform="translate(24, 112)">
       <circle cx="5" cy="5" r="4.5" fill="#e34f26" />
       <text x="17" y="9" class="lang-name">HTML</text>
-      <text x="52.8" y="9" class="lang-percent">17%</text>
+      <text x="52.8" y="9" class="lang-percent">16.7%</text>
     </g>
     <g transform="translate(230, 112)">
       <circle cx="5" cy="5" r="4.5" fill="#bd93f9" />
       <text x="17" y="9" class="lang-name">CSS</text>
-      <text x="45.6" y="9" class="lang-percent">4.3%</text>
+      <text x="45.6" y="9" class="lang-percent">4.2%</text>
     </g>
     <g transform="translate(24, 136)">
       <circle cx="5" cy="5" r="4.5" fill="#38bdf8" />
