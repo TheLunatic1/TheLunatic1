@@ -4,8 +4,7 @@
   "description": "Live Dynamic SVG GitHub Profile Stats Server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "preinstall": "node dist/setup.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.19.2"
