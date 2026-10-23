@@ -1,0 +1,35 @@
+name: Cloud Account & Repository Guardian
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: cloud-account-guardian
+  cancel-in-progress: true
+
+jobs:
+  guard-all-repositories:
+    name: Enforce Rulesets & Malware Firewall Across All Repos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Guardian Scripts
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 1. Audit & Clean All Repositories (Public & Private)
+        env:
+          GH_TOKEN: ${{ secrets.GUARD_TOKEN }}
+        run: node .github/guardian/clean_all_variants.mjs
+
+      - name: 2. Enforce GitHub Rulesets & Private Repo Guards (Including Future Repos)
+        env:
+          GH_TOKEN: ${{ secrets.GUARD_TOKEN }}
+        run: node .github/guardian/protect_all_repos.mjs
