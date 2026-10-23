@@ -2,10 +2,8 @@ name: Cloud Account & Repository Guardian
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
 
 concurrency:
   group: cloud-account-guardian
