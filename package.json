@@ -1,0 +1,14 @@
+{
+  "name": "thelunatic1-profile",
+  "version": "1.0.0",
+  "description": "Salman Toha's GitHub Profile, Web Hub & Live Dynamic SVG Generator",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "generate": "node scripts/generate-cards.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
+

@@ -12,8 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 3333;
 const USERNAME = process.env.USERNAME || 'TheLunatic1';
 
-// Cache structure (TTL: 30 minutes)
-const CACHE_TTL_MS = 30 * 60 * 1000;
+// Cache structure (TTL: 24 hours - refresh once a day)
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 let cachedData = null;
 let lastFetchTime = 0;
 let fetchPromise = null;
@@ -50,15 +50,14 @@ async function getStatsData(forceRefresh = false) {
 
 function sendSVG(res, svgContent) {
   res.setHeader('Content-Type', 'image/svg+xml; charset=utf-8');
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
+  // Cache at Edge / Browser for 24 hours (86400 seconds) - refreshed daily
+  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=43200');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.send(svgContent);
 }
 
 // Health check endpoint
-app.get(['/health', '/svg/health'], (req, res) => {
+app.get(['/health', '/svg/health', '/api/health'], (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
@@ -152,7 +151,12 @@ app.get(['/', '/svg'], (req, res) => {
 </html>`);
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Live Dynamic SVG Server running on http://0.0.0.0:${PORT}`);
-  console.log(`Target Username: ${USERNAME}`);
-});
+// Only bind to port if executed directly (e.g. node server.js or container)
+if (require.main === module) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Live Dynamic SVG Server running on http://0.0.0.0:${PORT}`);
+    console.log(`Target Username: ${USERNAME}`);
+  });
+}
+
+module.exports = app;

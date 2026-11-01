@@ -99,19 +99,19 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## GitHub Analytics & Contributions
 
 <div align="center">
-  <img src="https://toha.tail2c2947.ts.net/svg/stats?theme=neo" width="100%" alt="GitHub Stats Card" />
+  <img src="https://raw.githubusercontent.com/TheLunatic1/TheLunatic1/main/public/svgs/stats.svg" width="100%" alt="GitHub Stats Card" />
 </div>
 
 <br>
 
 <div align="center">
-  <img src="https://toha.tail2c2947.ts.net/svg/languages?theme=neo" width="100%" alt="Most Used Languages Card" />
+  <img src="https://raw.githubusercontent.com/TheLunatic1/TheLunatic1/main/public/svgs/languages.svg" width="100%" alt="Most Used Languages Card" />
 </div>
 
 <br>
 
 <div align="center">
-  <img src="https://toha.tail2c2947.ts.net/svg/streak?theme=neo" width="100%" alt="GitHub Streak Card" />
+  <img src="https://raw.githubusercontent.com/TheLunatic1/TheLunatic1/main/public/svgs/streak.svg" width="100%" alt="GitHub Streak Card" />
 </div>
 
 <br>
@@ -121,7 +121,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## Achievements & Trophies
 
 <div align="center">
-  <img src="https://toha.tail2c2947.ts.net/svg/trophies?theme=neo" width="100%" alt="GitHub Trophies Card" />
+  <img src="https://raw.githubusercontent.com/TheLunatic1/TheLunatic1/main/public/svgs/trophies.svg" width="100%" alt="GitHub Trophies Card" />
 </div>
 
 <br>
@@ -143,7 +143,7 @@ I am a **Full Stack Developer & Systems Architect** from Dhaka, Bangladesh ðŸ‡§ð
 ## Top Contributed & Featured Repositories
 
 <div align="center">
-  <img src="https://toha.tail2c2947.ts.net/svg/top-repos?theme=neo" width="100%" alt="Top Contributed Repositories" />
+  <img src="https://raw.githubusercontent.com/TheLunatic1/TheLunatic1/main/public/svgs/top-repos.svg" width="100%" alt="Top Contributed Repositories" />
 </div>
 
 <br>

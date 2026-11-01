@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/svgs/(.*)", "destination": "/public/svgs/$1" },
+    { "source": "/(stats|languages|streak|trophies|top-repos|health)", "destination": "/api/index" },
+    { "source": "/svg/(stats|languages|streak|trophies|top-repos|health)", "destination": "/api/index" },
+    { "source": "/api/(stats|languages|streak|trophies|top-repos|health)", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/web/$1" }
+  ]
+}
+
