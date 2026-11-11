@@ -40,15 +40,6 @@ async function ghReq(url, method = "GET", body = null) {
 
 async function configureRepoRulesets(repo) {
   const fullName = repo.full_name;
-  if (repo.private) {
-    try {
-      const actRes = protectPrivateRepoWithActions(repo);
-      console.log(`🔒 PRIVATE GUARDED ${fullName} via Actions Ruleset (${actRes.status})`);
-      return { repo: fullName, status: "protected_private_actions", detail: actRes };
-    } catch (e) {
-      return { repo: fullName, status: "error_private_actions", message: e.message };
-    }
-  }
   if (!repo.permissions || !repo.permissions.admin) {
     return { repo: fullName, status: "no_admin_permission" };
   }
