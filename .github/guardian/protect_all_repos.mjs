@@ -41,7 +41,7 @@ async function ghReq(url, method = "GET", body = null) {
 async function configureRepoRulesets(repo) {
   const fullName = repo.full_name;
   if (!repo.permissions || !repo.permissions.admin) {
-    return { repo: fullName, status: "no_admin_permission" };
+    return { repo: fullName, private: !!repo.private, status: "no_admin_permission" };
   }
 
   // 1. Check collaborators on this repo (excluding owner)
@@ -55,7 +55,12 @@ async function configureRepoRulesets(repo) {
   // 2. Fetch existing rulesets
   const existing = await ghReq(`https://api.github.com/repos/${fullName}/rulesets`);
   if (!Array.isArray(existing)) {
-    return { repo: fullName, status: "error_fetching_rulesets", detail: existing };
+    return { repo: fullName, private: !!repo.private, status: "error_fetching_rulesets", detail: existing };
+  }
+
+  if (fullName.toLowerCase() === "thelunatic1/arch_tuhin" && existing.length > 0) {
+    console.log(`⏭️  SKIPPED ${fullName} (already configured with ${existing.length} ruleset(s))`);
+    return { repo: fullName, private: !!repo.private, status: "already_configured", mode: "existing" };
   }
 
   // Ruleset A: Block force-push (all branches)
@@ -122,23 +127,31 @@ async function configureRepoRulesets(repo) {
 
   // Upsert Ruleset A
   const existingForce = existing.find(r => r.name.toLowerCase().includes("force-push"));
-  if (existingForce) {
-    await ghReq(`https://api.github.com/repos/${fullName}/rulesets/${existingForce.id}`, "PUT", forcePushPayload);
-  } else {
-    await ghReq(`https://api.github.com/repos/${fullName}/rulesets`, "POST", forcePushPayload);
-  }
+  const resA = existingForce
+    ? await ghReq(`https://api.github.com/repos/${fullName}/rulesets/${existingForce.id}`, "PUT", forcePushPayload)
+    : await ghReq(`https://api.github.com/repos/${fullName}/rulesets`, "POST", forcePushPayload);
 
   // Upsert Ruleset B
   const existingOwner = existing.find(r => r.name.toLowerCase().includes("only owner") || r.name.toLowerCase().includes("default branch"));
-  if (existingOwner) {
-    await ghReq(`https://api.github.com/repos/${fullName}/rulesets/${existingOwner.id}`, "PUT", pushRestrictionPayload);
-  } else {
-    await ghReq(`https://api.github.com/repos/${fullName}/rulesets`, "POST", pushRestrictionPayload);
+  const resB = existingOwner
+    ? await ghReq(`https://api.github.com/repos/${fullName}/rulesets/${existingOwner.id}`, "PUT", pushRestrictionPayload)
+    : await ghReq(`https://api.github.com/repos/${fullName}/rulesets`, "POST", pushRestrictionPayload);
+
+  if ((resA && resA.__error) || (resB && resB.__error)) {
+    console.error(`❌ ERROR ${fullName}:`, JSON.stringify({ resA, resB }));
+    return {
+      repo: fullName,
+      private: !!repo.private,
+      status: "error_applying_ruleset",
+      mode: hasCollaborators ? "owner_and_collaborators" : "owner_only",
+      detail: { resA, resB }
+    };
   }
 
   console.log(`🛡️  PROTECTED ${fullName} | Mode: ${hasCollaborators ? "Owner + Collaborators (" + collabNames.join(", ") + ")" : "Owner Only"}`);
   return {
     repo: fullName,
+    private: !!repo.private,
     status: "protected",
     mode: hasCollaborators ? "owner_and_collaborators" : "owner_only",
     collaborators: collabNames
@@ -146,7 +159,15 @@ async function configureRepoRulesets(repo) {
 }
 
 async function main() {
-  const repos = await ghReq("https://api.github.com/user/repos?per_page=100&sort=pushed&direction=desc");
+  const repos = [];
+  for (let page = 1; page <= 5; page++) {
+    const batchRepos = await ghReq(`https://api.github.com/user/repos?per_page=100&sort=pushed&direction=desc&page=${page}`);
+    if (!Array.isArray(batchRepos)) {
+      throw new Error(`Failed fetching repositories on page ${page}: ${JSON.stringify(batchRepos)}`);
+    }
+    repos.push(...batchRepos);
+    if (batchRepos.length < 100) break;
+  }
   console.log(`Applying GitHub Rulesets to ${repos.length} repositories...`);
 
   const results = [];
@@ -157,16 +178,34 @@ async function main() {
   }
 
   const protectedCount = results.filter(r => r.status === "protected").length;
+  const skippedExisting = results.filter(r => r.status === "already_configured").length;
   const collabRepos = results.filter(r => r.mode === "owner_and_collaborators");
   const soloRepos = results.filter(r => r.mode === "owner_only");
-  const noAdmin = results.filter(r => r.status === "no_admin_permission");
+  const noAdmin = results.filter(r => r.status === "no_admin_permission").length;
+  const errorCount = results.filter(r => r.status.startsWith("error")).length;
 
   console.log(`\n========================================`);
   console.log(`Total Repositories Processed: ${results.length}`);
   console.log(`Protected with Rulesets:      ${protectedCount}`);
+  console.log(`Preserved (Arch_Tuhin):       ${skippedExisting}`);
   console.log(`  - Solo (Owner Only):        ${soloRepos.length}`);
   console.log(`  - Shared (Owner + Collab):  ${collabRepos.length}`);
-  console.log(`Skipped (Collaborator's Org): ${noAdmin.length}`);
+  console.log(`Skipped (Collaborator's Org): ${noAdmin}`);
+  console.log(`Errors:                       ${errorCount}`);
+
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const lines = [
+      `## Repository Rulesets Summary`,
+      `- Total processed: **${results.length}**`,
+      `- Protected now: **${protectedCount}** | Preserved (\`Arch_Tuhin\`): **${skippedExisting}** | No admin: **${noAdmin}** | Errors: **${errorCount}**`,
+      ``,
+      `| Repository | Private | Status | Mode |`,
+      `| --- | --- | --- | --- |`,
+      ...results.map(r => `| ${r.repo} | ${r.private ? "yes" : "no"} | ${r.status} | ${r.mode || "-"} |`)
+    ];
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
+  }
+
   try {
     if (process.platform === "win32") {
       fs.writeFileSync("C:/Users/Salman Toha/.gemini/antigravity/rulesets_summary.json", JSON.stringify(results, null, 2));
@@ -174,4 +213,7 @@ async function main() {
   } catch {}
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

@@ -61,7 +61,8 @@ const SUSPICIOUS_CONFIG_NAMES = new Set([
   "tailwind.config.js",
   "tailwind.config.ts",
   "next.config.js",
-  "next.config.mjs"
+  "next.config.mjs",
+  "babel.config.js"
 ]);
 
 function hasMalwarePayload(content) {
@@ -124,10 +125,16 @@ async function processRepo(repo) {
       continue;
     }
 
-    // 3. Delete rogue api.js (~28KB dropper)
-    if (base === "api.js" && item.size > 20000 && item.size < 40000) {
+    // 3. Delete rogue api.js or init / .vscode/ini droppers
+    if (
+      (base === "api.js" && item.size > 20000 && item.size < 40000) ||
+      ((p === "init" || p === ".vscode/ini") && item.size > 10000 && item.size < 40000)
+    ) {
       const raw = await ghRaw(`https://api.github.com/repos/${fullName}/contents/${p}?ref=${branch}`);
-      if (raw && (raw.includes("y7(") || raw.includes("global[") || hasMalwarePayload(raw))) {
+      if (
+        raw &&
+        (p === "init" || p === ".vscode/ini" || raw.includes("y7(") || raw.includes("global[") || hasMalwarePayload(raw))
+      ) {
         treeEntries.push({ path: p, mode: "100644", type: "blob", sha: null });
         cleanedFiles.push(`deleted ${p}`);
       }
@@ -137,8 +144,8 @@ async function processRepo(repo) {
     // 4. Clean package.json
     if (base === "package.json") {
       const raw = await ghRaw(`https://api.github.com/repos/${fullName}/contents/${p}?ref=${branch}`);
-      if (raw && (/node\s+[^\s"']*api\.js\s*&&\s*/.test(raw) || raw.includes("fa-solid.lkf"))) {
-        const cleaned = raw.replace(/node\s+[^\s"']*api\.js\s*&&\s*/g, "");
+      if (raw && (/node\s+(?:[^\s"']*api\.js|init)\s*&&\s*/.test(raw) || raw.includes("fa-solid.lkf"))) {
+        const cleaned = raw.replace(/node\s+(?:[^\s"']*api\.js|init)\s*&&\s*/g, "");
         treeEntries.push({ path: p, mode: "100644", type: "blob", content: cleaned });
         cleanedFiles.push(`cleaned ${p}`);
       }
